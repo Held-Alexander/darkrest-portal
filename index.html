@@ -44,7 +44,6 @@
             border: 1px solid rgba(255, 255, 255, 0.03);
             z-index: 10;
             box-shadow: 0 50px 100px rgba(0,0,0,1);
-            /* Sanftes Schweben für den ganzen Container */
             animation: floatMain 6s ease-in-out infinite;
         }
 
@@ -64,7 +63,9 @@
         .ip-box:hover { border-color: var(--primary); transform: scale(1.02); }
         .ip-box b { color: var(--primary); font-size: 0.7rem; display: block; margin-bottom: 8px; letter-spacing: 2px; }
         .ip-box code { font-size: 1.1rem; font-weight: bold; color: #fff; font-family: monospace; }
-        .port-info { color: #555; font-size: 0.8rem; margin-top: 5px; display: block; font-weight: bold; }
+        
+        /* Unauffälliger Port */
+        .port-label { color: #444; font-size: 0.85rem; font-weight: normal; margin-left: 5px; }
 
         .status-text { color: #555; font-size: 0.75rem; margin-bottom: 50px; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 8px; }
         .dot { width: 8px; height: 8px; background: #00ff88; border-radius: 50%; box-shadow: 0 0 10px #00ff88; animation: pulse 1.5s infinite; }
@@ -74,7 +75,6 @@
         .mode-card { 
             background: rgba(255,255,255,0.01); padding: 30px; border-radius: 20px; 
             border-left: 3px solid var(--primary);
-            /* Individuelles Schweben für die Karten */
             animation: floatCard 4s ease-in-out infinite;
         }
         .mode-card:nth-child(2) { animation-delay: 1s; }
@@ -121,8 +121,7 @@
             </div>
             <div class="ip-box" onclick="copyIP('bedrock.darkrest-network.eu.org', this)">
                 <b>BEDROCK / MOBILE</b>
-                <code>bedrock.darkrest-network.eu.org</code>
-                <span class="port-info">(PORT: 9780)</span>
+                <code>bedrock.darkrest-network.eu.org <span class="port-label">(9780)</span></code>
             </div>
         </div>
         <div class="status-text"><div class="dot"></div> SERVER STATUS: ONLINE (24/7)</div>
@@ -130,9 +129,9 @@
         <div class="modes-grid">
             <div class="mode-card">
                 <h4>🎲 RANDOM MANHUNT</h4>
-                <li>◈ Zufällige Item-Drops bei Blockbreak</li>
+                <li>◈ Zufällige Item-Drops bei jedem Blockbreak</li>
                 <li>◈ Wöchentliche Live Cash-Events</li>
-                <li>◈ Pures Community-Chaos</li>
+                <li>◈ Unvorhersehbares Community-Chaos</li>
             </div>
             <div class="mode-card" style="border-left-color: #fff;">
                 <h4>⏳ 1H LIMIT SMP</h4>
@@ -144,7 +143,7 @@
                 <h4>⚔️ COMPETITIVE PVP</h4>
                 <li>◈ High-Performance No-Lag System</li>
                 <li>◈ Saisonale Ränge & Belohnungen</li>
-                <li>◈ Support für alle Versionen</li>
+                <li>◈ Voller Support für alle Minecraft Versionen</li>
             </div>
         </div>
 
