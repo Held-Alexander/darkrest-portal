@@ -38,7 +38,7 @@
         }
 
         .main-container {
-            max-width: 1000px;
+            max-width: 1100px; /* Etwas breiter für die Mail-Liste */
             width: 90%;
             background: rgba(8, 8, 8, 0.98);
             margin: -120px 20px 40px 20px;
@@ -98,33 +98,55 @@
         .btn-yt { background: var(--youtube); }
         .btn:hover { transform: translateY(-5px); filter: brightness(1.1); }
 
-        /* NEUES FOOTER DESIGN */
+        /* FOOTER DESIGN FÜR ALLE MAILS */
         .footer-branding { 
-            margin-top: 80px; 
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 25px;
-            color: rgba(255, 255, 255, 0.3); /* Viel deutlicher als vorher */
-            transition: 0.5s ease;
-        }
-
-        .footer-branding:hover {
-            color: var(--primary);
-            text-shadow: 0 0 20px var(--primary);
-        }
-
-        .footer-line {
-            height: 1px;
-            width: 60px;
-            background: rgba(255, 255, 255, 0.1);
+            margin-top: 100px; 
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding-top: 40px;
         }
 
         .brand-name {
-            letter-spacing: 12px;
+            letter-spacing: 15px;
             font-weight: 900;
-            font-size: 0.8rem;
+            font-size: 1.2rem;
             text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 30px;
+            transition: 0.5s;
+        }
+
+        .mail-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px 30px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .mail-link {
+            color: rgba(255, 255, 255, 0.25);
+            text-decoration: none;
+            font-size: 0.75rem;
+            font-weight: bold;
+            transition: 0.3s;
+            text-transform: lowercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .mail-link:hover {
+            color: var(--primary);
+            text-shadow: 0 0 10px var(--primary);
+        }
+
+        .mail-link span { color: var(--primary); font-size: 0.6rem; opacity: 0.5; }
+
+        .footer-branding:hover .brand-name {
+            color: var(--primary);
+            text-shadow: 0 0 25px var(--primary);
         }
 
         #toast { 
@@ -183,9 +205,16 @@
         </div>
 
         <div class="footer-branding">
-            <div class="footer-line"></div>
             <div class="brand-name">B-CORE STUDIOS</div>
-            <div class="footer-line"></div>
+            <div class="mail-wrap">
+                <a class="mail-link" href="mailto:info@darkrest-network.eu.org"><span>◈</span> info</a>
+                <a class="mail-link" href="mailto:support@darkrest-network.eu.org"><span>◈</span> support</a>
+                <a class="mail-link" href="mailto:developer@darkrest-network.eu.org"><span>◈</span> developer</a>
+                <a class="mail-link" href="mailto:media@darkrest-network.eu.org"><span>◈</span> media</a>
+                <a class="mail-link" href="mailto:bewerbung@darkrest-network.eu.org"><span>◈</span> bewerbung</a>
+                <a class="mail-link" href="mailto:event@darkrest-network.eu.org"><span>◈</span> event</a>
+                <a class="mail-link" href="mailto:legal@darkrest-network.eu.org"><span>◈</span> legal</a>
+            </div>
         </div>
     </div>
 
