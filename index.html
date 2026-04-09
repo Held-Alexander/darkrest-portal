@@ -3,298 +3,224 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Darkrest Network | Official Minecraft Multiverse</title>
-    <meta name="description" content="Darkrest Network - Dein ultimativer Minecraft Server für Random Manhunt, Ultimate SMP und Competitive PVP. Join jetzt auf Java & Bedrock!">
-    <meta name="keywords" content="Minecraft, Darkrest, Network, SMP, Manhunt, PVP, Minecraft Server Deutsch">
-    <meta name="robots" content="index, follow">
-    
-    <meta property="og:title" content="Darkrest Network | Official">
-    <meta property="og:description" content="Das ultimative Minecraft Multiverse. Jetzt beitreten!">
-    <meta property="og:image" content="logo.png">
-    <meta name="theme-color" content="#00e5ff">
-
+    <title>Darkrest Network | Official</title>
     <link rel="icon" type="image/png" href="logo.png">
-
+    
     <style>
         :root {
             --primary: #00e5ff;
-            --primary-glow: rgba(0, 229, 255, 0.4);
             --discord: #5865f2;
             --youtube: #ff0000;
-            --bg: #050505;
-            --card-bg: rgba(255, 255, 255, 0.03);
+            --bg: #010101;
         }
 
         body {
             background-color: var(--bg);
             color: #eee;
-            font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Segoe UI', sans-serif;
             margin: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
             overflow-x: hidden;
-            scroll-behavior: smooth;
+            min-height: 100vh;
+            background: radial-gradient(circle at center, #0a1515 0%, #010101 100%);
         }
 
-        /* Moderne Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            height: 70px;
-            background: rgba(5, 5, 5, 0.8);
-            backdrop-filter: blur(15px);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 20px;
-            font-weight: 700;
-            font-size: 0.85rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            transition: 0.3s;
-        }
-
-        nav a:hover { color: var(--primary); }
-
-        /* Hero Bereich */
+        /* Hero Bereich - Größer & Animiert */
         .hero {
             width: 100%;
             height: 500px;
-            background: linear-gradient(to bottom, rgba(5,5,5,0.2), var(--bg)), url('grafik.jpg') center/cover no-repeat;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            background: linear-gradient(to bottom, transparent, var(--bg)), url('grafik.jpg') center/cover no-repeat;
+            border-bottom: 3px solid var(--primary);
+            box-shadow: 0 0 50px var(--primary);
+            animation: heroGlow 4s infinite alternate;
+        }
+
+        @keyframes heroGlow {
+            from { box-shadow: 0 0 20px rgba(0, 229, 255, 0.2); }
+            to { box-shadow: 0 0 60px rgba(0, 229, 255, 0.6); }
         }
 
         .main-container {
-            max-width: 1100px;
-            width: 90%;
-            margin: -100px 0 50px 0;
-            padding: 60px 40px;
-            background: rgba(10, 10, 10, 0.95);
+            max-width: 1200px;
+            width: 95%;
+            background: rgba(8, 8, 8, 0.98);
+            margin: -150px 20px 60px 20px;
+            padding: 80px 50px;
             border-radius: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 40px 100px rgba(0,0,0,0.8);
             text-align: center;
+            border: 2px solid rgba(0, 229, 255, 0.1);
             z-index: 10;
+            box-shadow: 0 50px 100px rgba(0,0,0,1);
+            animation: floatMain 5s ease-in-out infinite;
+        }
+
+        @keyframes floatMain {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
         }
 
         h1 { 
-            font-size: clamp(2.5rem, 10vw, 5rem); 
-            letter-spacing: 15px; 
+            font-size: clamp(3rem, 10vw, 6rem); 
+            letter-spacing: 20px; 
             margin: 0; 
-            text-shadow: 0 0 40px var(--primary-glow); 
-            font-weight: 900;
+            text-transform: uppercase; 
+            color: #fff; 
+            text-shadow: 0 0 35px var(--primary); 
         }
 
         .sub-tag { 
             color: var(--primary); 
-            letter-spacing: 8px; 
-            font-size: 0.9rem; 
-            font-weight: 300; 
-            margin-bottom: 60px; 
+            font-weight: 900; 
+            letter-spacing: 10px; 
+            margin: 20px 0 60px 0; 
             display: block; 
+            font-size: 1rem; 
+            opacity: 0.9; 
         }
 
-        /* IP Boxen */
-        .ip-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 30px; }
+        /* IP Boxen - Türkises Flimmern beim Hover */
+        .ip-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; margin-bottom: 40px; }
         .ip-box { 
             background: #000; 
-            border: 1px solid rgba(255,255,255,0.05); 
-            padding: 25px; 
-            border-radius: 24px; 
+            border: 2px solid #1a1a1a; 
+            padding: 40px; 
+            border-radius: 25px; 
             cursor: pointer; 
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
         }
+
         .ip-box:hover { 
             border-color: var(--primary); 
-            transform: translateY(-5px); 
-            box-shadow: 0 10px 30px rgba(0, 229, 255, 0.1);
+            transform: scale(1.05); 
+            box-shadow: 0 0 40px var(--primary);
+            filter: brightness(1.2);
         }
-        .ip-box b { color: var(--primary); font-size: 0.75rem; display: block; margin-bottom: 10px; }
-        .ip-box code { font-size: 1.2rem; color: #fff; }
 
-        .status-text { 
-            font-size: 0.85rem; 
-            margin: 40px 0; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            gap: 10px; 
-            color: #888;
-        }
-        .dot { width: 10px; height: 10px; background: #00ff88; border-radius: 50%; box-shadow: 0 0 15px #00ff88; }
+        .ip-box b { color: var(--primary); font-size: 0.9rem; display: block; margin-bottom: 12px; letter-spacing: 3px; }
+        .ip-box code { font-size: 1.4rem; font-weight: bold; color: #fff; font-family: monospace; }
 
-        /* Content Sections */
-        h2 { text-transform: uppercase; letter-spacing: 4px; font-size: 1.2rem; margin-top: 60px; color: #fff; }
+        .status-text { color: #fff; font-size: 1.1rem; margin-bottom: 60px; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 12px; }
+        .dot { width: 12px; height: 12px; background: #00ff88; border-radius: 50%; box-shadow: 0 0 20px #00ff88; animation: pulse 1s infinite; }
+        
+        @keyframes pulse { 0% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.3); opacity: 0.7; } 100% { transform: scale(1); opacity: 1; } }
 
-        .modes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin: 40px 0; }
+        /* Gamemodes - Beweglich */
+        .modes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin: 60px 0; text-align: left; }
         .mode-card { 
-            background: var(--card-bg); 
-            padding: 30px; 
+            background: rgba(255,255,255,0.02); 
+            padding: 40px; 
             border-radius: 25px; 
-            text-align: left; 
-            border: 1px solid transparent;
+            border-left: 5px solid var(--primary);
+            animation: floatCard 4s ease-in-out infinite;
             transition: 0.3s;
         }
-        .mode-card:hover { border-color: rgba(255,255,255,0.1); background: rgba(255,255,255,0.05); }
-        .mode-card h4 { margin: 0 0 15px 0; color: var(--primary); }
-        .mode-card p { font-size: 0.9rem; color: #aaa; line-height: 1.6; }
+        .mode-card:hover { background: rgba(0, 229, 255, 0.05); transform: translateX(10px); box-shadow: 0 0 30px rgba(0, 229, 255, 0.2); }
 
-        /* Wiki Teaser */
-        .wiki-section {
-            background: linear-gradient(45deg, #111, #1a1a1a);
-            border-radius: 25px;
-            padding: 40px;
-            margin-top: 40px;
-            border-left: 4px solid var(--primary);
+        @keyframes floatCard { 
+            0%, 100% { transform: translateY(0px); } 
+            50% { transform: translateY(-15px); } 
         }
 
-        /* Buttons */
-        .btn-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 40px; }
-        .btn { 
-            padding: 18px 40px; 
-            border-radius: 15px; 
-            text-decoration: none; 
-            font-weight: 800; 
-            color: #fff; 
-            letter-spacing: 1px; 
-            transition: 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .btn-discord { background: var(--discord); }
-        .btn-yt { background: var(--youtube); }
-        .btn-wiki { background: #333; }
-        .btn:hover { transform: translateY(-3px); filter: brightness(1.2); }
+        .mode-card h4 { color: #fff; margin: 0 0 20px 0; font-size: 1.3rem; text-transform: uppercase; letter-spacing: 2px; }
+        .mode-card li { list-style: none; color: #ccc; font-size: 1rem; margin-bottom: 12px; line-height: 1.5; }
+        .mode-card li::before { content: '◈'; color: var(--primary); margin-right: 12px; }
 
-        /* Footer */
-        footer { padding: 80px 0; text-align: center; opacity: 0.6; font-size: 0.8rem; width: 100%; }
-        .mail-wrap { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 20px; }
-        .mail-box { cursor: pointer; padding: 5px 12px; background: rgba(255,255,255,0.05); border-radius: 8px; transition: 0.2s; }
-        .mail-box:hover { color: var(--primary); background: rgba(0, 229, 255, 0.1); }
+        /* Buttons - Riesig */
+        .btn-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin-top: 60px; }
+        .btn { padding: 25px 60px; border-radius: 20px; text-decoration: none; font-weight: 900; color: white; text-transform: uppercase; letter-spacing: 3px; min-width: 280px; text-align: center; transition: 0.4s; font-size: 1.2rem; }
+        .btn-discord { background: var(--discord); box-shadow: 0 10px 30px rgba(88, 101, 242, 0.4); }
+        .btn-yt { background: var(--youtube); box-shadow: 0 10px 30px rgba(255, 0, 0, 0.4); }
+        .btn:hover { transform: scale(1.1) translateY(-10px); filter: brightness(1.2); box-shadow: 0 0 50px var(--primary); }
+
+        /* Footer & Alle Mails */
+        .footer-branding { margin-top: 120px; border-top: 2px solid rgba(255,255,255,0.05); padding-top: 60px; }
+        .brand-name { letter-spacing: 20px; font-weight: 900; font-size: 2rem; text-transform: uppercase; color: rgba(255, 255, 255, 0.2); margin-bottom: 50px; transition: 0.8s; }
+        .footer-branding:hover .brand-name { color: var(--primary); text-shadow: 0 0 40px var(--primary); transform: scale(1.1); }
+
+        .mail-wrap { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; max-width: 1100px; margin: 0 auto; }
+        .mail-box { color: rgba(255, 255, 255, 0.4); font-size: 0.9rem; font-weight: bold; transition: 0.3s; letter-spacing: 1px; cursor: pointer; padding: 15px 25px; background: rgba(255,255,255,0.03); border-radius: 15px; border: 1px solid transparent; }
+        .mail-box:hover { color: var(--primary); border-color: var(--primary); background: rgba(0, 229, 255, 0.1); box-shadow: 0 0 25px var(--primary); transform: translateY(-5px); }
 
         /* Toast */
-        #toast { 
-            visibility: hidden; background: #fff; color: #000; padding: 15px 30px; 
-            position: fixed; bottom: 30px; border-radius: 12px; font-weight: bold; z-index: 2000;
-        }
-        #toast.show { visibility: visible; animation: slideUp 0.4s ease-out; }
-        @keyframes slideUp { from { transform: translateY(100px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        #toast { visibility: hidden; background: var(--primary); color: #000; padding: 20px 50px; position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%); border-radius: 15px; font-weight: 900; z-index: 1000; font-size: 1.2rem; box-shadow: 0 0 40px var(--primary); }
+        #toast.show { visibility: visible; animation: pop 0.4s forwards; }
+        @keyframes pop { from {opacity: 0; bottom: 0;} to {opacity: 1; bottom: 40px;} }
     </style>
 </head>
 <body>
 
-    <nav>
-        <a href="#">Home</a>
-        <a href="#modes">Spielmodi</a>
-        <a href="#wiki">Wiki</a>
-        <a href="https://discord.gg/5PMkSJ6724" target="_blank">Support</a>
-    </nav>
-
-    <div class="hero">
-        <h1>DARKREST</h1>
-        <span class="sub-tag">DEIN ULTIMATIVES MULTIVERSE</span>
-    </div>
+    <div class="hero"></div>
 
     <div class="main-container">
-        
+        <h1>DARKREST</h1>
+        <span class="sub-tag">OFFIZIELLES NETZWERK PORTAL</span>
+
         <div class="ip-grid">
-            <div class="ip-box" onclick="copyText('java.darkrest-network.eu.org', 'Java IP kopiert!')">
-                <b>JAVA EDITION (1.8 - 1.20+)</b>
+            <div class="ip-box" onclick="copyText('java.darkrest-network.eu.org', 'IP KOPIERT: java.darkrest-network.eu.org')">
+                <b>JAVA EDITION (1.7 - UNENDLICH)</b>
                 <code>java.darkrest-network.eu.org</code>
             </div>
-            <div class="ip-box" onclick="copyText('bedrock.darkrest-network.eu.org', 'Bedrock IP kopiert!')">
+            <div class="ip-box" onclick="copyText('bedrock.darkrest-network.eu.org', 'IP KOPIERT: bedrock.darkrest-network.eu.org')">
                 <b>BEDROCK / MOBILE</b>
-                <code>bedrock.darkrest-network.eu.org <span style="opacity:0.5; font-size:0.8rem;">(9780)</span></code>
+                <code>bedrock.darkrest-network.eu.org <span style="color:#666;">(9780)</span></code>
             </div>
         </div>
 
-        <div class="status-text" id="server-status">
-            <div class="dot"></div> LADE SERVER STATUS...
-        </div>
+        <div class="status-text"><div class="dot"></div> SERVER STATUS: ONLINE (24/7)</div>
 
-        <h2 id="modes">Unsere Spielmodi</h2>
         <div class="modes-grid">
             <div class="mode-card">
-                <h4>🎲 Random Manhunt</h4>
-                <p>Erlebe pures Chaos! Jeder Block den du abbaust, gibt dir ein zufälliges Item. Perfekt für Streamer und Speedrunner.</p>
+                <h4>🎲 RANDOM MANHUNT</h4>
+                <li>◈ Zufällige Item-Drops bei jedem Blockbreak</li>
+                <li>◈ Wöchentliche Live Cash-Events</li>
+                <li>◈ Unvorhersehbares Community-Chaos</li>
+            </div>
+            <div class="mode-card" style="border-left-color: #fff;">
+                <h4>🛡️ ULTIMATE SMP</h4>
+                <li>◈ Unbegrenzte Spielzeit für alle</li>
+                <li>◈ Exklusive Custom Items & Rezepte</li>
+                <li>◈ Strategisches Imperium-Building</li>
             </div>
             <div class="mode-card">
-                <h4>🛡️ Ultimate SMP</h4>
-                <p>Baue dein Imperium auf. Mit Custom Rezepten, exklusiven Items und einer starken Wirtschaft. 24/7 online für dich.</p>
-            </div>
-            <div class="mode-card">
-                <h4>⚔️ Competitive PVP</h4>
-                <p>Kein Lag, pure Skill-Kämpfe. Steige in den Rängen auf und gewinne saisonale Belohnungen in unserer Arena.</p>
-            </div>
-        </div>
-
-        <div class="wiki-section" id="wiki">
-            <h2>📚 Darkrest Wiki</h2>
-            <p style="color: #888;">Neu auf dem Server? In unserem Wiki findest du alle Custom Rezepte, Befehle und Regeln, um direkt durchzustarten.</p>
-            <div class="btn-row">
-                <a href="wiki.html" class="btn btn-wiki">WIKI ÖFFNEN</a>
+                <h4>⚔️ COMPETITIVE PVP</h4>
+                <li>◈ High-Performance No-Lag System</li>
+                <li>◈ Saisonale Ränge & Belohnungen</li>
+                <li>◈ Voller Support für alle Versionen</li>
             </div>
         </div>
 
         <div class="btn-row">
-            <a href="https://discord.gg/5PMkSJ6724" class="btn btn-discord" target="_blank">DISCORD</a>
-            <a href="https://www.youtube.com/@Darkrest67" class="btn btn-yt" target="_blank">YOUTUBE</a>
+            <a href="https://discord.gg/5PMkSJ6724" class="btn btn-discord" target="_blank">DISCORD JOINEN</a>
+            <a href="https://www.youtube.com/@Darkrest67" target="_blank" class="btn btn-yt">YOUTUBE KANAL</a>
+            <a href="wiki.html" class="btn" style="background: #333; border: 1px solid var(--primary);">ZUM WIKI</a>
         </div>
 
+        <div class="footer-branding">
+            <div class="brand-name">B-CORE STUDIOS</div>
+            <div class="mail-wrap">
+                <div class="mail-box" onclick="copyText('info@darkrest-network.eu.org', 'MAIL KOPIERT')">info@darkrest-network.eu.org</div>
+                <div class="mail-box" onclick="copyText('support@darkrest-network.eu.org', 'MAIL KOPIERT')">support@darkrest-network.eu.org</div>
+                <div class="mail-box" onclick="copyText('developer@darkrest-network.eu.org', 'MAIL KOPIERT')">developer@darkrest-network.eu.org</div>
+                <div class="mail-box" onclick="copyText('media@darkrest-network.eu.org', 'MAIL KOPIERT')">media@darkrest-network.eu.org</div>
+                <div class="mail-box" onclick="copyText('bewerbung@darkrest-network.eu.org', 'MAIL KOPIERT')">bewerbung@darkrest-network.eu.org</div>
+                <div class="mail-box" onclick="copyText('event@darkrest-network.eu.org', 'MAIL KOPIERT')">event@darkrest-network.eu.org</div>
+                <div class="mail-box" onclick="copyText('legal@darkrest-network.eu.org', 'MAIL KOPIERT')">legal@darkrest-network.eu.org</div>
+            </div>
+        </div>
     </div>
-
-    <footer>
-        <div style="letter-spacing: 10px; font-weight: 900; margin-bottom: 20px;">B-CORE STUDIOS</div>
-        <div class="mail-wrap">
-            <div class="mail-box" onclick="copyText('info@darkrest-network.eu.org', 'Mail kopiert!')">info@darkrest-network.eu.org</div>
-            <div class="mail-box" onclick="copyText('support@darkrest-network.eu.org', 'Mail kopiert!')">support@darkrest-network.eu.org</div>
-        </div>
-        <p style="margin-top: 40px;">&copy; 2026 Darkrest Network. Not an official Minecraft product.</p>
-    </footer>
 
     <div id="toast">TEXT KOPIERT!</div>
 
     <script>
-        // Copy Funktion
         function copyText(text, message) {
-            navigator.clipboard.writeText(text).then(() => {
-                var x = document.getElementById("toast");
-                x.innerText = message;
-                x.className = "show";
-                setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
-            });
+            navigator.clipboard.writeText(text);
+            var x = document.getElementById("toast");
+            x.innerText = message;
+            x.className = "show";
+            setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
         }
-
-        // Live Server Status Abfrage (MCAPI)
-        async function updateStatus() {
-            try {
-                const response = await fetch('https://api.mcsrvstat.us/2/java.darkrest-network.eu.org');
-                const data = await response.json();
-                const statusDiv = document.getElementById('server-status');
-                if(data.online) {
-                    statusDiv.innerHTML = `<div class="dot"></div> SERVER ONLINE: <b>${data.players.online} Spieler</b>`;
-                } else {
-                    statusDiv.innerHTML = `<div class="dot" style="background:red; box-shadow:0 0 15px red;"></div> SERVER OFFLINE`;
-                }
-            } catch (e) {
-                console.log("Status konnte nicht geladen werden.");
-            }
-        }
-        updateStatus();
     </script>
 </body>
 </html>
