@@ -48,7 +48,7 @@
             animation: fadeInUp 0.8s ease-out;
         }
 
-        .header-section { text-align: center; margin-bottom: 60px; }
+        .header-section { text-align: center; margin-bottom: 40px; }
         
         h1 { 
             font-size: clamp(2rem, 5vw, 3.5rem); letter-spacing: 10px; 
@@ -56,6 +56,16 @@
             background: linear-gradient(to right, #fff, var(--primary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+        }
+
+        h2 {
+            color: #fff;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            font-size: 1.5rem;
+            margin-top: 60px;
+            margin-bottom: 30px;
+            text-align: center;
         }
 
         .update-banner {
@@ -96,12 +106,18 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             font-size: 1rem;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
             gap: 12px;
             border-bottom: 1px solid var(--border);
             padding-bottom: 15px;
+        }
+
+        .wiki-card p {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: #aaa;
         }
 
         .cmd-item {
@@ -158,13 +174,49 @@
 
     <div class="main-container">
         <div class="header-section">
-            <h1>Wiki & Commands</h1>
+            <h1>Wiki & Guides</h1>
             <div class="update-banner">📢 Server Update: 10.04.2026</div>
         </div>
 
+        <h2>Unsere Spielmodi</h2>
+        <div class="wiki-grid" style="margin-bottom: 80px;">
+            <div class="wiki-card" style="border-left: 4px solid #00ff88;">
+                <h3>🛡️ Ultimate SMP</h3>
+                <p>
+                    Unser Survival-Projekt für echte Abenteurer. Baue Imperien, handele mit anderen Spielern und nutze exklusive 
+                    <strong>Custom Items</strong> sowie einzigartige Rezepte. Hier steht das gemeinsame Überleben im Fokus.
+                </p>
+            </div>
+
+            <div class="wiki-card" style="border-left: 4px solid #ff0055;">
+                <h3>🎲 Random Manhunt</h3>
+                <p>
+                    Pures Chaos! Bei jedem Block, den du abbaust, erhältst du einen <strong>zufälligen Item-Drop</strong>. 
+                    Kannst du den Enderdrachen besiegen, während der gesamte Server dich jagt?
+                </p>
+            </div>
+
+            <div class="wiki-card" style="border-left: 4px solid #5865f2;">
+                <h3>⚔️ Competitive PvP</h3>
+                <p>
+                    Stelle dein Können unter Beweis. In unserer PvP-Welt triffst du auf ein <strong>No-Lag System</strong> 
+                    und saisonale Ränge. Nutze verschiedene Kits und kämpfe dich an die Spitze der Bestenliste.
+                </p>
+            </div>
+
+            <div class="wiki-card" style="border-left: 4px solid #ffaa00;">
+                <h3>🕹️ Minigames</h3>
+                <p>
+                    Klassische Action in luftiger Höhe. Beschütze dein Bett, sammle Ressourcen und zerstöre die Basis deiner Gegner. 
+                    Im Moment bieten wir <strong>Bedwars</strong> an – weitere Spiele folgen bald!
+                </p>
+            </div>
+        </div>
+
+        <h2 style="margin-top: 0;">Befehle & Steuerung</h2>
         <div class="wiki-grid">
             <div class="wiki-card">
-                <h3>🌍 Allgemeine Kommands</h3>
+                <h3>🌍 Allgemein</h3>
                 <div class="cmd-item">
                     <span class="cmd-name">/sb</span>
                     <span class="cmd-desc">Scoreboard anzeigen / verbergen</span>
