@@ -11,22 +11,22 @@
             --bg: #010101;
             --sidebar-bg: #050505;
             --card-bg: rgba(255, 255, 255, 0.02);
-            --border: rgba(0, 229, 255, 0.2);
-            --terminal-bg: rgba(0, 10, 10, 0.8);
+            --border: rgba(0, 229, 255, 0.15);
+            --terminal-accent: rgba(0, 229, 255, 0.05);
         }
 
         * { box-sizing: border-box; }
         body {
             background-color: var(--bg);
             color: #eee;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', 'Segoe UI', sans-serif;
             margin: 0;
             display: flex;
             background: radial-gradient(circle at center, #0a1818 0%, #010101 100%);
             scroll-behavior: smooth;
         }
 
-        /* Sidebar Look */
+        /* SIDEBAR */
         .sidebar {
             width: 320px;
             height: 100vh;
@@ -64,69 +64,77 @@
         }
         .nav-link:hover { color: var(--primary); background: rgba(0, 229, 255, 0.05); border-color: var(--border); }
 
-        /* Content Area */
+        /* CONTENT */
         .content { margin-left: 320px; width: 100%; }
-        .container { max-width: 1000px; margin: 0 auto; padding: 100px 50px; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 80px 50px; }
 
-        section { margin-bottom: 180px; scroll-margin-top: 100px; }
+        section { margin-bottom: 150px; scroll-margin-top: 100px; }
 
-        /* Epische Header */
         .header-box { text-align: center; margin-bottom: 100px; }
         .welcome-title { font-size: 5rem; letter-spacing: 20px; text-transform: uppercase; margin: 0; color: #fff; }
         .sub-title { letter-spacing: 8px; color: var(--primary); font-size: 1.2rem; margin: 20px 0; font-weight: 300; }
-        .quote { color: #555; font-style: italic; max-width: 600px; margin: 40px auto; line-height: 1.8; position: relative; padding: 0 20px; }
 
         h2 { font-size: 1.6rem; letter-spacing: 5px; text-transform: uppercase; border-bottom: 1px solid var(--border); padding-bottom: 20px; margin-bottom: 60px; color: #fff; text-align: center; }
 
-        /* Grid für Items & Modi */
+        /* GRID */
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
         .card { 
             background: var(--card-bg); padding: 40px; border-radius: 20px; 
             border: 1px solid rgba(255,255,255,0.05); transition: 0.4s ease;
         }
-        .card:hover { border-color: var(--primary); box-shadow: 0 0 30px rgba(0, 229, 255, 0.1); transform: scale(1.02); }
+        .card:hover { border-color: var(--primary); transform: translateY(-5px); }
+        .card img { width: 80px; height: 80px; image-rendering: pixelated; margin-bottom: 25px; display: block; margin-left: auto; margin-right: auto; }
+        .card h3 { text-align: center; margin-top: 0; letter-spacing: 2px; }
 
-        /* Custom Items */
-        .item-img { width: 80px; height: 80px; image-rendering: pixelated; margin-bottom: 25px; display: block; margin-left: auto; margin-right: auto; }
-        .item-name { display: block; text-align: center; font-weight: 900; letter-spacing: 2px; color: #fff; margin-bottom: 15px; }
-
-        /* Terminal Boxes für Befehle & Regeln */
+        /* TERMINAL DESIGN (Regeln & Commands) */
         .terminal {
-            background: var(--terminal-bg);
+            background: #020505;
             border: 1px solid var(--border);
-            border-radius: 15px;
-            padding: 40px;
+            border-radius: 20px;
+            padding: 50px;
+            font-family: 'Consolas', 'Courier New', monospace;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
             position: relative;
-            box-shadow: inset 0 0 20px rgba(0, 229, 255, 0.05);
+            overflow: hidden;
         }
         .terminal::before {
-            content: "SYSTEM_ACCESS: GRANTED";
-            position: absolute; top: -12px; left: 30px;
-            background: var(--bg); padding: 0 15px;
-            color: var(--primary); font-size: 0.7rem; letter-spacing: 2px;
+            content: "";
+            position: absolute; top: 0; left: 0; width: 100%; height: 4px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
         }
+        .terminal-header { color: var(--primary); margin-bottom: 30px; font-weight: bold; border-bottom: 1px solid rgba(0, 229, 255, 0.1); padding-bottom: 15px; }
+        .cmd-block { margin-bottom: 40px; }
+        .cmd-title { color: #fff; text-decoration: underline; margin-bottom: 15px; display: block; text-transform: uppercase; letter-spacing: 2px; }
+        .cmd-line { display: block; margin-bottom: 8px; color: var(--primary); }
+        .cmd-line span { color: #aaa; }
 
-        .cmd-line { display: block; margin-bottom: 10px; font-family: 'Courier New', Courier, monospace; color: var(--primary); }
-        .cmd-text { color: #ccc; margin-left: 10px; }
+        /* RULES */
+        .rule-cat { color: var(--primary); font-size: 1.1rem; margin: 30px 0 15px 0; display: block; border-left: 3px solid var(--primary); padding-left: 15px; }
+        .rule-item { margin-bottom: 10px; padding-left: 10px; color: #ccc; line-height: 1.6; }
 
-        /* Footer Massive */
-        .footer-massive {
-            background: #020202;
+        /* FOOTER */
+        .footer {
+            background: #000;
             border-top: 1px solid var(--border);
-            padding: 100px 50px;
+            padding: 80px 50px;
+            color: #555;
+        }
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 50px;
-            margin-top: 200px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 60px;
         }
-        .footer-col h4 { color: var(--primary); text-transform: uppercase; letter-spacing: 3px; margin-bottom: 30px; }
-        .footer-col a { display: block; color: #555; text-decoration: none; margin-bottom: 15px; transition: 0.3s; }
-        .footer-col a:hover { color: #fff; padding-left: 10px; }
+        .footer-brand { font-size: 1.5rem; font-weight: 900; color: #fff; letter-spacing: 5px; margin-bottom: 20px; }
+        .footer-emails { font-size: 0.85rem; line-height: 2; }
+        .footer-emails span { display: block; color: var(--primary); }
         .footer-bottom { 
-            grid-column: 1 / -1; text-align: center; padding-top: 50px; 
-            border-top: 1px solid rgba(255,255,255,0.02); margin-top: 50px;
+            text-align: center; margin-top: 80px; padding-top: 40px; 
+            border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.75rem; 
         }
-        .brand-huge { font-size: 3rem; font-weight: 900; letter-spacing: 30px; color: rgba(255,255,255,0.02); text-transform: uppercase; display: block; }
+        .footer-links a { color: #888; text-decoration: none; margin: 0 15px; transition: 0.3s; }
+        .footer-links a:hover { color: var(--primary); }
 
         @media (max-width: 1100px) { .sidebar { display: none; } .content { margin-left: 0; } }
     </style>
@@ -138,13 +146,13 @@
         <div class="nav-label">Navigation</div>
         <a href="index.html" class="nav-link">🏠 ZUR HAUPTSEITE</a>
         <a href="#welcome" class="nav-link">📂 ARCHIV-START</a>
-        <a href="#modi" class="nav-link">🎮 SYSTEM-SEKTOREN</a>
+        <a href="#modi" class="nav-link">🎮 SPIELMODI</a>
         <a href="#items" class="nav-link">💎 ARTEFAKTE</a>
-        <a href="#cmds" class="nav-link">⌨️ TERMINAL-CMDS</a>
-        <a href="#rules" class="nav-link">📜 PROTOKOLLE</a>
-        <div class="nav-label">Kontakt</div>
-        <a href="https://discord.gg/5PMkSJ6724" class="nav-link">💬 DISCORD</a>
-        <a href="https://www.youtube.com/@Darkrest-network" class="nav-link">🎬 YOUTUBE</a>
+        <a href="#cmds" class="nav-link">⌨️ BEFEHLE</a>
+        <a href="#rules" class="nav-link">📜 REGELWERK</a>
+        <div class="nav-label">Media</div>
+        <a href="https://discord.gg/5PMkSJ6724" target="_blank" class="nav-link">💬 DISCORD</a>
+        <a href="https://www.youtube.com/@Darkrest-network" target="_blank" class="nav-link">🎬 YOUTUBE</a>
     </div>
 
     <div class="content">
@@ -153,26 +161,30 @@
             <section id="welcome" class="header-box">
                 <h1 class="welcome-title">ARCHIV</h1>
                 <div class="sub-title">DIE ZENTRALE DES DARKREST NETWORKS</div>
-                <div class="quote">
+                <p style="color: #666; max-width: 700px; margin: 40px auto; font-style: italic; line-height: 1.8;">
                     "Wissen ist Macht. In den Tiefen dieses Archivs findest du die Gesetze unserer Welten, die Spezifikationen unserer seltensten Schätze und die Pfade zur absoluten Dominanz."
-                </div>
-                <a href="index.html" style="color: var(--primary); text-decoration: none; letter-spacing: 2px; font-size: 0.8rem; border: 1px solid var(--border); padding: 15px 30px; border-radius: 50px; transition: 0.3s;">← ZURÜCK ZUM PORTAL</a>
+                </p>
+                <a href="index.html" style="color: var(--primary); text-decoration: none; border: 1px solid var(--border); padding: 12px 30px; border-radius: 50px; font-size: 0.8rem; letter-spacing: 2px;">← ZURÜCK ZUM PORTAL</a>
             </section>
 
             <section id="modi">
-                <h2>System-Sektoren</h2>
+                <h2>Spielmodi</h2>
                 <div class="grid">
-                    <div class="card">
-                        <h3 style="color: #00ff88; margin-top:0;">ULTIMATE SMP</h3>
-                        <p style="color: #777; font-size: 0.9rem; line-height: 1.6;">Das Herzstück für Siedler. Eigene Claims, ein komplexes Wirtschaftssystem und Custom-Rezepte für Langzeit-Survival.</p>
+                    <div class="card" style="border-bottom: 3px solid #00ff88;">
+                        <h3 style="color: #00ff88;">ULTIMATE SMP</h3>
+                        <p style="color: #666; font-size: 0.9rem; text-align: center;">Professionelles Survival mit Claims, Wirtschaft und exklusiven Rezepten.</p>
                     </div>
-                    <div class="card">
-                        <h3 style="color: #ff0055; margin-top:0;">MANHUNT</h3>
-                        <p style="color: #777; font-size: 0.9rem; line-height: 1.6;">Chaos-Dimension. Jeder abgebaute Block ist eine Wundertüte. Überlebe gegen Jäger in einer Welt voller Zufälle.</p>
+                    <div class="card" style="border-bottom: 3px solid #ff0055;">
+                        <h3 style="color: #ff0055;">MANHUNT</h3>
+                        <p style="color: #666; font-size: 0.9rem; text-align: center;">Chaos-Modus: Jeder Block-Break droppt ein zufälliges Item. Überlebe die Jagd.</p>
                     </div>
-                    <div class="card">
-                        <h3 style="color: var(--primary); margin-top:0;">PVP ARENA</h3>
-                        <p style="color: #777; font-size: 0.9rem; line-height: 1.6;">Optimierte Kampfumgebung. Keine Lags, professionelle Kits und ein Leaderboard für die Elite der Krieger.</p>
+                    <div class="card" style="border-bottom: 3px solid #ffaa00;">
+                        <h3 style="color: #ffaa00;">BEDWARS</h3>
+                        <p style="color: #666; font-size: 0.9rem; text-align: center;">Strategische Schlachten in den Wolken. Schütze dein Bett, vernichte die Feinde.</p>
+                    </div>
+                    <div class="card" style="border-bottom: 3px solid var(--primary);">
+                        <h3 style="color: var(--primary);">PVP ARENA</h3>
+                        <p style="color: #666; font-size: 0.9rem; text-align: center;">Keine Lags. Nur Skill. Verschiedene Kits und ein gnadenloses Leaderboard.</p>
                     </div>
                 </div>
             </section>
@@ -181,94 +193,114 @@
                 <h2>Custom Artefakte</h2>
                 <div class="grid">
                     <div class="card">
-                        <img src="osterei.png" class="item-img" alt="Osterei">
-                        <span class="item-name">OSTEREI</span>
-                        <p style="text-align: center; color: #555; font-size: 0.85rem;">Ein seltenes kosmisches Objekt. Sammlerwert: Exorbitant.</p>
+                        <img src="osterei.png" alt="Osterei">
+                        <span style="display:block; text-align:center; font-weight:900;">OSTEREI</span>
+                        <p style="font-size: 0.8rem; color: #555; text-align:center;">Ein kosmisches Sammlerstück von unschätzbarem Wert.</p>
                     </div>
                     <div class="card">
-                        <img src="server.png" class="item-img" alt="Server">
-                        <span class="item-name">SERVER</span>
-                        <p style="text-align: center; color: #555; font-size: 0.85rem;">Physische Manifestation der Darkrest-Datenbank. Ein Item von unschätzbarer Macht.</p>
+                        <img src="server.png" alt="Server">
+                        <span style="display:block; text-align:center; font-weight:900;">SERVER</span>
+                        <p style="font-size: 0.8rem; color: #555; text-align:center;">Das physische Herzstück unserer Datenbank.</p>
                     </div>
                     <div class="card">
-                        <img src="elytra.png" class="item-img" alt="Phantom">
-                        <span class="item-name">PHANTOM-VANGUARD</span>
-                        <p style="text-align: center; color: #555; font-size: 0.85rem;">Elytra mit der Verstärkung einer Netherite-Brustplatte. Fliegen ohne Schwachstelle.</p>
+                        <img src="elytra.png" alt="Vanguard">
+                        <span style="display:block; text-align:center; font-weight:900;">PHANTOM-VANGUARD</span>
+                        <p style="font-size: 0.8rem; color: #555; text-align:center;">Elytra mit der Rüstungskraft einer Netherite-Brustplatte.</p>
                     </div>
                     <div class="card">
-                        <img src="bundle.png" class="item-img" alt="Relikt">
-                        <span class="item-name">RELIKT DER LEERE</span>
-                        <div style="text-align: center; color: #555; font-size: 0.85rem;">Sieht aus wie ein Totenkompass, ist aber ein unendliches Lager-Artefakt.</div>
+                        <img src="bundle.png" alt="Relikt">
+                        <span style="display:block; text-align:center; font-weight:900;">RELIKT DER LEERE</span>
+                        <p style="font-size: 0.8rem; color: #555; text-align:center;">Grenzenloser Stauraum in Form eines Totenkompasses.</p>
                     </div>
                 </div>
             </section>
 
             <section id="cmds">
-                <h2>Terminal-Kommands</h2>
+                <h2>Kommando Übersicht</h2>
                 <div class="terminal">
-                    <div style="margin-bottom: 30px; color: #fff; font-weight: bold; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 10px;">
-                        [SESSION_UPDATE: RECENT_PATCH]
+                    <div class="terminal-header">📢 SERVER_UPDATE: ACCESS_COMMANDS</div>
+                    
+                    <div class="cmd-block">
+                        <span class="cmd-title">🌍 Allgemeine Kommands</span>
+                        <span class="cmd-line">➤ /sb <span>» Scoreboard anzeigen</span></span>
+                        <span class="cmd-line">➤ /spawn <span>» Zum Spawn teleportieren</span></span>
+                        <span class="cmd-line">➤ /msg &lt;Spieler&gt; <span>» Privaten Chat starten</span></span>
+                        <span class="cmd-line">➤ /tpa &lt;Spieler&gt; <span>» Teleport-Anfrage senden</span></span>
+                        <span class="cmd-line">➤ /server &lt;Name&gt; <span>» Server wechseln (Manhunt, Lobby, Minigames)</span></span>
                     </div>
-                    <span class="cmd-line">➤ /sb <span class="cmd-text">» Scoreboard umschalten</span></span>
-                    <span class="cmd-line">➤ /spawn <span class="cmd-text">» Rückkehr zum Sektor-Zentrum</span></span>
-                    <span class="cmd-line">➤ /msg &lt;User&gt; <span class="cmd-text">» Verschlüsselte Direktnachricht</span></span>
-                    <span class="cmd-line">➤ /tpa &lt;User&gt; <span class="cmd-text">» Teleportations-Anfrage senden</span></span>
-                    <span class="cmd-line">➤ /server &lt;ID&gt; <span class="cmd-text">» Sektor-Wechsel (Manhunt, Lobby, Minigames)</span></span>
+
+                    <div class="cmd-block">
+                        <span class="cmd-title">⚔️ PvP-Welt</span>
+                        <span class="cmd-line">➤ /kit <span>» Kit erhalten (nur hier verfügbar)</span></span>
+                    </div>
+
+                    <div class="cmd-block">
+                        <span class="cmd-title" style="color: #ffaa00;">👑 BigBoss & VIP</span>
+                        <span class="cmd-line">➤ /hat | /craft | /warp <span>» Rang-Exklusive Features</span></span>
+                        <span class="cmd-line">➤ /home | /ec | /anvil | /grindstone <span>» Komfort-Befehle</span></span>
+                        <span class="cmd-line">➤ /"welt" <span>» Welten-Quickswitch (SMP • Lobby • PvP)</span></span>
+                    </div>
                     
-                    <div style="margin: 30px 0; color: #444;">----------------------------------</div>
-                    
-                    <span class="cmd-line" style="color: #ffaa00;">➤ /kit <span class="cmd-text">» Ausrüstung anfordern (Nur PvP-Welt)</span></span>
-                    <span class="cmd-line" style="color: #ffaa00;">➤ /hat <span class="cmd-text">» Artefakt als Kopfbedeckung tragen</span></span>
-                    <span class="cmd-line" style="color: #ffaa00;">➤ /home <span class="cmd-text">» Rückkehr zum privaten Stützpunkt</span></span>
-                    <span class="cmd-line" style="color: #ffaa00;">➤ /ec <span class="cmd-text">» Mobiler Zugriff auf Enderchest</span></span>
-                    <span class="cmd-line" style="color: #ffaa00;">➤ /"welt" <span class="cmd-text">» Schneller Welten-Switch (SMP, Lobby, PvP)</span></span>
+                    <div style="text-align: center; color: var(--primary); font-size: 0.8rem; border-top: 1px solid rgba(0, 229, 255, 0.1); padding-top: 20px;">
+                        🎮 VIEL SPASS AUF DEM SERVER!
+                    </div>
                 </div>
             </section>
 
             <section id="rules">
-                <h2>Sicherheits-Protokolle</h2>
-                <div class="terminal" style="border-color: #ff4444;">
-                    <div class="sub-title" style="color: #ff4444; font-size: 0.9rem;">INGAME_GOVERNANCE</div>
-                    <div class="cmd-line">01_HACKS <span class="cmd-text">» Jede Nutzung von X-Ray, Ghost-Clients oder Dupes führt zum permanenten Ausschluss.</span></div>
-                    <div class="cmd-line">02_GRIEFING <span class="cmd-text">» Die Zerstörung von Eigentum ist streng verboten (Instant Bann).</span></div>
-                    <div class="cmd-line">03_SUPPORT <span class="cmd-text">» Clip-Pflicht! Ohne Videobeweis erfolgt keine Bearbeitung.</span></div>
-                    <div class="cmd-line">04_TIME <span class="cmd-text">» Betteln nach Ingame-Zeit oder Rängen ist untersagt.</span></div>
+                <h2>Server-Regelwerk</h2>
+                <div class="terminal" style="border-color: #ff4444; background: #050101;">
+                    <div class="terminal-header" style="color: #ff4444; border-bottom-color: rgba(255, 68, 68, 0.1);">📜 SECURITY_PROTOCOL: PROTOCOLS_V1</div>
                     
-                    <div class="sub-title" style="margin-top: 50px; font-size: 0.9rem;">DISCORD_GOVERNANCE</div>
-                    <div class="cmd-line">#01_RESPEKT <span class="cmd-text">» Keine Beleidigungen, kein Mobbing, keine Provokationen.</span></div>
-                    <div class="cmd-line">#02_SPAM <span class="cmd-text">» Keine Massenpings oder Channel-Spamming.</span></div>
-                    <div class="cmd-line">#03_ADVERTISING <span class="cmd-text">» Werbung nur nach Freigabe durch das HighTeam.</span></div>
+                    <span class="rule-cat">💬 Discord-Regeln</span>
+                    <div class="rule-item">1️⃣ Respektvoll – Keine Beleidigungen, Mobbing oder Provokationen.</div>
+                    <div class="rule-item">2️⃣ Kein Spam – Keine unnötigen Nachrichten oder Mass-Pings.</div>
+                    <div class="rule-item">3️⃣ Werbung – Nur mit Team-Erlaubnis erlaubt.</div>
+                    <div class="rule-item">5️⃣ Kein Trolling – Keine Störungen oder Provokationen.</div>
+                    <div class="rule-item">8️⃣ Private Daten – Keine persönlichen Infos teilen (Doxing).</div>
+
+                    <span class="rule-cat" style="color: #ff4444; border-left-color: #ff4444;">🎮 Ingame-Regeln</span>
+                    <div class="rule-item">1️⃣ Keine Hacks – X-Ray, Ghost-Clients, Duping = Permanent Bann.</div>
+                    <div class="rule-item" style="color: #ff4444; font-weight: bold;">3️⃣ Griefing – Streng verboten! Führt zum sofortigen Bann.</div>
+                    <div class="rule-item">4️⃣ Combat-Logging – Verboten, gilt als unfairer Vorteil.</div>
+                    <div class="rule-item">8️⃣ Support – Clip-Pflicht! Ohne Videobeweis keine Hilfe.</div>
+                    <div class="rule-item">9️⃣ Keine Fragen nach mehr Ingame-Zeit.</div>
+
+                    <div style="margin-top: 30px; font-size: 0.75rem; text-align: center; color: #555;">
+                        ⚠️ Hinweis: Verstöße ziehen Strafen nach sich. 🎉 Sei fair!
+                    </div>
                 </div>
             </section>
 
         </div>
 
-        <footer class="footer-massive">
-            <div class="footer-col">
-                <h4>Darkrest Network</h4>
-                <p style="color: #444; font-size: 0.8rem; line-height: 1.6;">Ein High-End Minecraft Netzwerk für Spieler, die mehr als nur Standard wollen. Wir bieten Technik, Performance und eine einzigartige Community.</p>
-            </div>
-            <div class="footer-col">
-                <h4>Navigation</h4>
-                <a href="index.html">Portal</a>
-                <a href="#welcome">Archiv Start</a>
-                <a href="#rules">Regelwerk</a>
-                <a href="https://discord.gg/5PMkSJ6724">Discord Support</a>
-            </div>
-            <div class="footer-col">
-                <h4>Legal</h4>
-                <a href="#">Impressum</a>
-                <a href="#">Datenschutz</a>
-                <a href="#">Nutzungsbedingungen</a>
-            </div>
-            <div class="footer-col">
-                <h4>Follow Us</h4>
-                <a href="https://www.youtube.com/@Darkrest-network">YouTube</a>
-                <a href="https://discord.gg/5PMkSJ6724">Discord Server</a>
+        <footer class="footer">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-brand">B-CORE STUDIOS</div>
+                    <p style="font-size: 0.85rem; line-height: 1.6;">Darkrest Network ist ein innovatives Gaming-Netzwerk. Wir setzen auf Performance, Stabilität und eine faire Spielerfahrung.</p>
+                </div>
+                <div class="footer-emails">
+                    <h4>CONTACT US</h4>
+                    <span>info@darkrest-network.eu.org</span>
+                    <span>support@darkrest-network.eu.org</span>
+                    <span>developer@darkrest-network.eu.org</span>
+                    <span>media@darkrest-network.eu.org</span>
+                    <span>bewerbung@darkrest-network.eu.org</span>
+                    <span>legal@darkrest-network.eu.org</span>
+                </div>
+                <div>
+                    <h4>LEGAL</h4>
+                    <div class="footer-links" style="display: flex; flex-direction: column; gap: 10px;">
+                        <a href="#">Impressum</a>
+                        <a href="#">Datenschutzerklärung</a>
+                        <a href="#">Nutzungsbedingungen</a>
+                    </div>
+                </div>
             </div>
             <div class="footer-bottom">
-                <span class="brand-huge">B-CORE STUDIOS</span>
-                <p style="color: #222; margin-top: 30px; font-size: 0.7rem;">&copy; 2026 DARKREST NETWORK. ALL RIGHTS RESERVED. POWERED BY B-CORE.</p>
+                <p>Copyright © 2026 DARKREST NETWORK. We are not affiliated with Mojang, AB.</p>
+                <div style="letter-spacing: 15px; font-weight: 900; opacity: 0.05; font-size: 3rem; margin-top: 20px;">B-CORE STUDIOS</div>
             </div>
         </footer>
     </div>
