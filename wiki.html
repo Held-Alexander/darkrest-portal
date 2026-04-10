@@ -8,298 +8,303 @@
     <style>
         :root {
             --primary: #00e5ff;
-            --bg: #010101;
-            --glass: rgba(255, 255, 255, 0.03);
-            --border: rgba(0, 229, 255, 0.2);
+            --bg: #0b0b0b;
+            --sidebar-bg: #0f0f0f;
+            --card-bg: #161616;
+            --border: rgba(255, 255, 255, 0.05);
+            --text-muted: #888;
+            --accent-red: #ff4444;
         }
+
+        * { box-sizing: border-box; }
 
         body {
             background-color: var(--bg);
             color: #eee;
-            font-family: 'Segoe UI', sans-serif;
+            font-family: 'Inter', 'Segoe UI', sans-serif;
             margin: 0;
-            overflow-x: hidden;
-            background: radial-gradient(circle at center, #0a1515 0%, #010101 100%);
+            display: flex;
+            scroll-behavior: smooth;
         }
 
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 300px;
+            height: 100vh;
+            background: var(--sidebar-bg);
+            border-right: 1px solid var(--border);
+            position: fixed;
+            left: 0; top: 0;
+            padding: 40px 20px;
+            overflow-y: auto;
+            z-index: 900;
+        }
+
+        .sidebar-brand {
+            font-size: 1.2rem;
+            font-weight: 900;
+            letter-spacing: 3px;
+            color: var(--primary);
+            margin-bottom: 40px;
+            padding-left: 15px;
+            text-transform: uppercase;
+        }
+
+        .nav-group { margin-bottom: 30px; }
+        .nav-label { 
+            font-size: 0.7rem; 
+            text-transform: uppercase; 
+            color: #444; 
+            letter-spacing: 2px; 
+            margin-bottom: 15px; 
+            padding-left: 15px; 
+            font-weight: bold;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            color: var(--text-muted);
+            text-decoration: none;
+            border-radius: 12px;
+            transition: 0.3s;
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+        }
+
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.03);
+            color: #fff;
+        }
+
+        .nav-link.active {
+            background: rgba(0, 229, 255, 0.1);
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* Main Content */
+        .content-wrapper {
+            margin-left: 300px;
+            width: 100%;
         }
 
         .navbar {
-            width: 100%; height: 60px; background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(15px); display: flex; justify-content: center;
-            align-items: center; position: fixed; top: 0; z-index: 1000;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .navbar a {
-            color: white; text-decoration: none; margin: 0 20px;
-            font-weight: bold; letter-spacing: 2px; font-size: 0.8rem;
-            text-transform: uppercase; transition: 0.3s;
-        }
-        .navbar a:hover { color: var(--primary); }
-
-        .main-container {
-            max-width: 1100px;
-            width: 90%;
-            margin: 120px auto 60px auto;
-            animation: fadeInUp 0.8s ease-out;
-        }
-
-        .header-section { text-align: center; margin-bottom: 40px; }
-        
-        h1 { 
-            font-size: clamp(2rem, 5vw, 3.5rem); letter-spacing: 10px; 
-            text-transform: uppercase; margin: 0;
-            background: linear-gradient(to right, #fff, var(--primary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        h2 {
-            color: #fff;
-            letter-spacing: 5px;
-            text-transform: uppercase;
-            font-size: 1.5rem;
-            margin-top: 60px;
-            margin-bottom: 30px;
-            text-align: center;
-        }
-
-        .update-banner {
-            display: inline-block;
-            padding: 5px 20px;
-            border: 1px solid var(--primary);
-            border-radius: 50px;
-            color: var(--primary);
-            font-size: 0.7rem;
-            letter-spacing: 2px;
-            margin-top: 15px;
-            text-transform: uppercase;
-        }
-
-        .wiki-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px;
-        }
-
-        .wiki-card {
-            background: var(--glass);
+            height: 70px;
+            background: rgba(11, 11, 11, 0.9);
             backdrop-filter: blur(10px);
-            padding: 35px;
-            border-radius: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: 0.4s;
-        }
-
-        .wiki-card:hover {
-            border-color: var(--primary);
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 229, 255, 0.1);
-        }
-
-        .wiki-card h3 {
-            color: #fff;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 1rem;
-            margin-bottom: 20px;
             display: flex;
             align-items: center;
-            gap: 12px;
+            justify-content: flex-end;
+            padding: 0 50px;
             border-bottom: 1px solid var(--border);
-            padding-bottom: 15px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
-        .wiki-card p {
-            font-size: 0.9rem;
-            line-height: 1.6;
-            color: #aaa;
+        .navbar a { 
+            color: #fff; 
+            text-decoration: none; 
+            margin-left: 35px; 
+            font-size: 0.85rem; 
+            font-weight: 600; 
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.6; 
+            transition: 0.3s; 
+        }
+        .navbar a:hover { opacity: 1; color: var(--primary); }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 80px 50px;
         }
 
-        .cmd-item {
-            margin-bottom: 15px;
-            padding-left: 10px;
-            border-left: 2px solid transparent;
-            transition: 0.3s;
-        }
+        section { margin-bottom: 120px; scroll-margin-top: 100px; }
 
-        .cmd-item:hover {
-            border-left-color: var(--primary);
-            padding-left: 15px;
-        }
+        h1 { font-size: 3rem; margin-bottom: 20px; letter-spacing: -1px; }
+        h2 { font-size: 2rem; margin-top: 50px; border-bottom: 1px solid var(--border); padding-bottom: 15px; margin-bottom: 30px; }
+        h3 { color: var(--primary); font-size: 1.2rem; text-transform: uppercase; margin-top: 40px; letter-spacing: 1px; }
 
-        .cmd-name {
-            font-family: 'Consolas', monospace;
-            color: var(--primary);
-            font-weight: bold;
-            font-size: 1rem;
-        }
+        p { line-height: 1.8; color: #ccc; font-size: 1.05rem; }
 
-        .cmd-desc {
-            color: #aaa;
-            font-size: 0.85rem;
-            display: block;
-            margin-top: 2px;
-        }
-
-        .cmd-note {
-            color: #555;
-            font-size: 0.75rem;
-            display: block;
-            margin-top: 4px;
-            font-style: italic;
-        }
-
-        footer {
-            margin-top: 80px;
-            padding: 50px;
+        /* Item Cards */
+        .item-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+        .item-card { 
+            background: var(--card-bg); 
+            border: 1px solid var(--border); 
+            padding: 30px; 
+            border-radius: 20px; 
+            transition: 0.3s; 
             text-align: center;
-            border-top: 1px solid rgba(255,255,255,0.05);
         }
+        .item-card:hover { border-color: var(--primary); transform: translateY(-5px); }
+        .item-card img { width: 64px; height: 64px; image-rendering: pixelated; margin-bottom: 20px; }
+        .item-title { font-weight: bold; color: #fff; font-size: 1.1rem; display: block; margin-bottom: 10px; }
 
-        .brand-footer { letter-spacing: 12px; font-weight: 900; color: rgba(255,255,255,0.1); text-transform: uppercase; }
+        /* Rules Boxes */
+        .rule-list { margin-top: 20px; }
+        .rule-item { 
+            background: rgba(255, 255, 255, 0.02); 
+            padding: 18px 25px; 
+            margin-bottom: 12px; 
+            border-radius: 12px; 
+            border-left: 4px solid var(--primary);
+            font-size: 1rem;
+            display: flex;
+            align-items: flex-start;
+        }
+        .rule-item b { color: var(--primary); margin-right: 15px; min-width: 25px; }
+        .rule-ingame { border-left-color: var(--accent-red); }
+        .rule-ingame b { color: var(--accent-red); }
+
+        /* Footer */
+        footer { margin-top: 100px; padding: 40px 0; border-top: 1px solid var(--border); text-align: center; color: #444; font-size: 0.8rem; letter-spacing: 2px; }
+
+        @media (max-width: 1100px) {
+            .sidebar { transform: translateX(-100%); display: none; }
+            .content-wrapper { margin-left: 0; }
+        }
     </style>
 </head>
 <body>
 
-    <nav class="navbar">
-        <a href="index.html">Home</a>
-        <a href="wiki.html" style="color: var(--primary);">Wiki</a>
-        <a href="https://discord.gg/5PMkSJ6724" target="_blank">Discord</a>
-    </nav>
-
-    <div class="main-container">
-        <div class="header-section">
-            <h1>Wiki & Guides</h1>
-            <div class="update-banner">📢 Server Update: 10.04.2026</div>
+    <div class="sidebar">
+        <div class="sidebar-brand">DARKREST</div>
+        
+        <div class="nav-group">
+            <div class="nav-label">Navigation</div>
+            <a href="#welcome" class="nav-link active">🏠 Willkommen</a>
+            <a href="#rules" class="nav-link">📜 Regelwerk</a>
+            <a href="#modes" class="nav-link">🎮 Spielmodi</a>
+            <a href="#items" class="nav-link">💎 Custom Items</a>
+            <a href="#cmds" class="nav-link">⌨️ Befehle</a>
         </div>
-
-        <h2>Unsere Spielmodi</h2>
-        <div class="wiki-grid" style="margin-bottom: 80px;">
-            <div class="wiki-card" style="border-left: 4px solid #00ff88;">
-                <h3>🛡️ Ultimate SMP</h3>
-                <p>
-                    Unser Survival-Projekt für echte Abenteurer. Baue Imperien, handele mit anderen Spielern und nutze exklusive 
-                    <strong>Custom Items</strong> sowie einzigartige Rezepte. Hier steht das gemeinsame Überleben im Fokus.
-                </p>
-            </div>
-
-            <div class="wiki-card" style="border-left: 4px solid #ff0055;">
-                <h3>🎲 Random Manhunt</h3>
-                <p>
-                    Pures Chaos! Bei jedem Block, den du abbaust, erhältst du einen <strong>zufälligen Item-Drop</strong>. 
-                    Kannst du den Enderdrachen besiegen, während der gesamte Server dich jagt?
-                </p>
-            </div>
-
-            <div class="wiki-card" style="border-left: 4px solid #5865f2;">
-                <h3>⚔️ Competitive PvP</h3>
-                <p>
-                    Stelle dein Können unter Beweis. In unserer PvP-Welt triffst du auf ein <strong>No-Lag System</strong> 
-                    und saisonale Ränge. Nutze verschiedene Kits und kämpfe dich an die Spitze der Bestenliste.
-                </p>
-            </div>
-
-            <div class="wiki-card" style="border-left: 4px solid #ffaa00;">
-                <h3>🕹️ Minigames</h3>
-                <p>
-                    Klassische Action in luftiger Höhe. Beschütze dein Bett, sammle Ressourcen und zerstöre die Basis deiner Gegner. 
-                    Im Moment bieten wir <strong>Bedwars</strong> an – weitere Spiele folgen bald!
-                </p>
-            </div>
-        </div>
-
-        <h2 style="margin-top: 0;">Befehle & Steuerung</h2>
-        <div class="wiki-grid">
-            <div class="wiki-card">
-                <h3>🌍 Allgemein</h3>
-                <div class="cmd-item">
-                    <span class="cmd-name">/sb</span>
-                    <span class="cmd-desc">Scoreboard anzeigen / verbergen</span>
-                </div>
-                <div class="cmd-item">
-                    <span class="cmd-name">/spawn</span>
-                    <span class="cmd-desc">Zum Haupt-Spawn teleportieren</span>
-                </div>
-                <div class="cmd-item">
-                    <span class="cmd-name">/msg &lt;Spieler&gt;</span>
-                    <span class="cmd-desc">Privaten Chat mit einem Spieler starten</span>
-                </div>
-                <div class="cmd-item">
-                    <span class="cmd-name">/tpa &lt;Spieler&gt;</span>
-                    <span class="cmd-desc">Teleport-Anfrage versenden</span>
-                </div>
-                <div class="cmd-item">
-                    <span class="cmd-name">/server &lt;Name&gt;</span>
-                    <span class="cmd-desc">Zu einem anderen Server wechseln</span>
-                    <span class="cmd-note">z.B. Manhunt, Lobby, Minigames</span>
-                </div>
-            </div>
-
-            <div class="wiki-card">
-                <h3>⚔️ PvP-Welt</h3>
-                <div class="cmd-item">
-                    <span class="cmd-name">/kit</span>
-                    <span class="cmd-desc">Starter-Kit für den Kampf erhalten</span>
-                    <span class="cmd-note">Hinweis: Nur in der PvP-Welt verfügbar!</span>
-                </div>
-            </div>
-
-            <div class="wiki-card">
-                <h3>👑 BigBoss Rang</h3>
-                <div class="cmd-item">
-                    <span class="cmd-name">/hat</span>
-                    <span class="cmd-desc">Das Item in deiner Hand als Hut tragen</span>
-                </div>
-                <div class="cmd-item">
-                    <span class="cmd-name">/craft</span>
-                    <span class="cmd-desc">Werkbank überall mobil öffnen</span>
-                </div>
-                <div class="cmd-item">
-                    <span class="cmd-name">/warp</span>
-                    <span class="cmd-desc">Liste aller öffentlichen Warps öffnen</span>
-                </div>
-            </div>
-
-            <div class="wiki-card">
-                <h3>⭐ VIP-Kommands</h3>
-                <div class="cmd-item">
-                    <span class="cmd-name">/home</span>
-                    <span class="cmd-desc">Teleportiere dich zu deinem Zuhause</span>
-                </div>
-                <div class="cmd-item">
-                    <span class="cmd-name">/ec</span>
-                    <span class="cmd-desc">Öffne deine Enderchest von überall</span>
-                </div>
-                <div class="cmd-item">
-                    <span class="cmd-name">/anvil</span>
-                    <span class="cmd-desc">Mobilen Amboss benutzen</span>
-                </div>
-                <div class="cmd-item">
-                    <span class="cmd-name">/grindstone</span>
-                    <span class="cmd-desc">Mobilen Schleifstein benutzen</span>
-                </div>
-                <div class="cmd-item">
-                    <span class="cmd-name">/"welt"</span>
-                    <span class="cmd-desc">Schneller Wechsel zwischen Welten</span>
-                    <span class="cmd-note">SMP • Lobby • PvP</span>
-                </div>
-            </div>
-        </div>
-
-        <div style="text-align: center; margin-top: 50px; opacity: 0.5; font-size: 0.9rem;">
-            💬 Bei weiteren Fragen melde dich einfach bei unserem Team!<br>
-            <strong>Viel Spaß auf dem Darkrest Network!</strong>
+        
+        <div class="nav-group">
+            <div class="nav-label">Extern</div>
+            <a href="https://discord.gg/5PMkSJ6724" target="_blank" class="nav-link">💬 Discord</a>
+            <a href="index.html" class="nav-link">🌐 Hauptseite</a>
         </div>
     </div>
 
-    <footer>
-        <div class="brand-footer">B-CORE STUDIOS</div>
-    </footer>
+    <div class="content-wrapper">
+        <nav class="navbar">
+            <a href="index.html">Portal</a>
+            <a href="wiki.html">Wiki</a>
+            <a href="https://discord.gg/5PMkSJ6724">Discord</a>
+        </nav>
 
+        <div class="container">
+            
+            <section id="welcome">
+                <h1>Willkommen</h1>
+                <p>Willkommen im offiziellen Wiki des <strong>Darkrest Networks</strong>. Hier findest du alles Wissenswerte über unsere Spielmodi, die geltenden Regeln und unsere exklusiven Systeme. Nutze die Navigation links, um dich zurechtzufinden.</p>
+            </section>
+
+            <section id="rules">
+                <h2>📜 Regelwerk</h2>
+                <p>Mit dem Betreten des Netzwerks akzeptierst du automatisch die folgenden Bestimmungen. Unwissenheit schützt vor Strafe nicht.</p>
+                
+                <h3>Discord-Regeln</h3>
+                <div class="rule-list">
+                    <div class="rule-item"><b>1</b> Respektvoll – Keine Beleidigungen, Mobbing oder Provokationen.</div>
+                    <div class="rule-item"><b>2</b> Kein Spam – Keine Mass-Pings oder falsche Channels nutzen.</div>
+                    <div class="rule-item"><b>3</b> Werbung – Nur mit expliziter Team-Erlaubnis gestattet.</div>
+                    <div class="rule-item"><b>4</b> Inhalte – Keine NSFW-, illegalen oder extremen Inhalte.</div>
+                    <div class="rule-item"><b>7</b> Team-Anweisungen – Den Anweisungen der Moderation ist Folge zu leisten.</div>
+                    <div class="rule-item"><b>8</b> Private Daten – Keine persönlichen Informationen (Doxing) teilen.</div>
+                </div>
+
+                <h3>Ingame-Regeln</h3>
+                <div class="rule-list">
+                    <div class="rule-item rule-ingame"><b>1</b> Keine Hacks – X-Ray, Ghost-Clients oder Duping führen zum permanenten Bann.</div>
+                    <div class="rule-item rule-ingame"><b>3</b> Griefing – Das Zerstören fremden Eigentums ist streng untersagt.</div>
+                    <div class="rule-item"><b>4</b> Combat-Logging – Das Fliehen aus Kämpfen durch Logout ist verboten.</div>
+                    <div class="rule-item"><b>5</b> Exploits melden – Wer Fehler ausnutzt, statt sie zu melden, wird gebannt.</div>
+                    <div class="rule-item"><b>8</b> Support – Es besteht Clip-Pflicht bei Support-Anfragen (Beweislast).</div>
+                    <div class="rule-item"><b>9</b> Betteln – Fragen nach Ingame-Zeit oder Rängen ist untersagt.</div>
+                </div>
+            </section>
+
+            <section id="modes">
+                <h2>🎮 Spielmodi</h2>
+                <div class="item-grid">
+                    <div class="item-card">
+                        <span class="item-title">Ultimate SMP</span>
+                        <p style="font-size: 0.85rem;">Survival mit Tiefgang. Eigene Wirtschaft, Claims und Langzeit-Motivation.</p>
+                    </div>
+                    <div class="item-card">
+                        <span class="item-title">Random Manhunt</span>
+                        <p style="font-size: 0.85rem;">Jeder abgebaute Block gibt ein zufälliges Item. Chaos pur!</p>
+                    </div>
+                    <div class="item-card">
+                        <span class="item-title">PvP Arena</span>
+                        <p style="font-size: 0.85rem;">Trainiere dein Aiming in unserer No-Lag Umgebung mit verschiedenen Kits.</p>
+                    </div>
+                    <div class="item-card">
+                        <span class="item-title">Bedwars</span>
+                        <p style="font-size: 0.85rem;">Der Taktik-Klassiker. Verteidige dein Bett und vernichte die Gegner.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="items">
+                <h2>💎 Custom Items</h2>
+                <div class="item-grid">
+                    <div class="item-card">
+                        <img src="sword.png" alt="Sword Icon">
+                        <span class="item-title">Dark-Scythe</span>
+                        <p style="font-size: 0.8rem;">Verursacht nachts erhöhten Schaden und gewährt kurzzeitig Speed.</p>
+                    </div>
+                    <div class="item-card">
+                        <img src="pickaxe.png" alt="Pickaxe Icon">
+                        <span class="item-title">Area-Miner</span>
+                        <p style="font-size: 0.8rem;">Baut Blöcke in einem 3x3 Radius ab. Erhältlich über Events.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="cmds">
+                <h2>⌨️ Wichtige Befehle</h2>
+                <div class="rule-list">
+                    <div class="rule-item"><b>/spawn</b> Teleportiert dich zum Haupt-Spawnpoint.</div>
+                    <div class="rule-item"><b>/tpa [Name]</b> Sendet eine Teleport-Anfrage an einen Spieler.</div>
+                    <div class="rule-item"><b>/home</b> Teleportiert dich zu deinem gesetzten Zuhause (VIP).</div>
+                    <div class="rule-item"><b>/server</b> Öffnet das Menü zur Serverauswahl.</div>
+                </div>
+            </section>
+
+            <footer>
+                B-CORE STUDIOS &copy; 2026 | DARKREST NETWORK
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        // Aktiven Link in der Sidebar hervorheben beim Scrollen
+        const sections = document.querySelectorAll("section");
+        const navLinks = document.querySelectorAll(".nav-link");
+
+        window.addEventListener("scroll", () => {
+            let current = "";
+            sections.forEach((section) => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 150) {
+                    current = section.getAttribute("id");
+                }
+            });
+
+            navLinks.forEach((a) => {
+                a.classList.remove("active");
+                if (a.getAttribute("href").includes(current)) {
+                    a.classList.add("active");
+                }
+            });
+        });
+    </script>
 </body>
 </html>
