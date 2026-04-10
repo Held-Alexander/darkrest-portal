@@ -14,6 +14,7 @@
             --border: rgba(255, 255, 255, 0.05);
             --text-muted: #888;
             --accent-red: #ff4444;
+            --accent-gold: #ffaa00;
         }
 
         * { box-sizing: border-box; }
@@ -73,22 +74,13 @@
             margin-bottom: 5px;
         }
 
-        .nav-link:hover {
+        .nav-link:hover, .nav-link.active {
             background: rgba(255, 255, 255, 0.03);
-            color: #fff;
-        }
-
-        .nav-link.active {
-            background: rgba(0, 229, 255, 0.1);
             color: var(--primary);
-            font-weight: 600;
         }
 
         /* Main Content */
-        .content-wrapper {
-            margin-left: 300px;
-            width: 100%;
-        }
+        .content-wrapper { margin-left: 300px; width: 100%; }
 
         .navbar {
             height: 70px;
@@ -105,69 +97,41 @@
         }
 
         .navbar a { 
-            color: #fff; 
-            text-decoration: none; 
-            margin-left: 35px; 
-            font-size: 0.85rem; 
-            font-weight: 600; 
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            opacity: 0.6; 
-            transition: 0.3s; 
+            color: #fff; text-decoration: none; margin-left: 35px; 
+            font-size: 0.85rem; font-weight: 600; text-transform: uppercase;
+            letter-spacing: 1px; opacity: 0.6; transition: 0.3s; 
         }
         .navbar a:hover { opacity: 1; color: var(--primary); }
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 80px 50px;
-        }
+        .container { max-width: 900px; margin: 0 auto; padding: 80px 50px; }
 
         section { margin-bottom: 120px; scroll-margin-top: 100px; }
 
-        h1 { font-size: 3rem; margin-bottom: 20px; letter-spacing: -1px; }
-        h2 { font-size: 2rem; margin-top: 50px; border-bottom: 1px solid var(--border); padding-bottom: 15px; margin-bottom: 30px; }
-        h3 { color: var(--primary); font-size: 1.2rem; text-transform: uppercase; margin-top: 40px; letter-spacing: 1px; }
+        h1 { font-size: 3rem; margin-bottom: 20px; }
+        h2 { font-size: 1.8rem; margin-top: 50px; border-bottom: 1px solid var(--border); padding-bottom: 15px; margin-bottom: 30px; }
+        h3 { color: #fff; font-size: 1.1rem; text-transform: uppercase; margin-top: 40px; border-left: 3px solid var(--primary); padding-left: 15px; }
 
-        p { line-height: 1.8; color: #ccc; font-size: 1.05rem; }
-
-        /* Item Cards */
-        .item-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+        .item-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
         .item-card { 
-            background: var(--card-bg); 
-            border: 1px solid var(--border); 
-            padding: 30px; 
-            border-radius: 20px; 
-            transition: 0.3s; 
-            text-align: center;
+            background: var(--card-bg); border: 1px solid var(--border); padding: 25px; border-radius: 20px; 
+            transition: 0.3s; text-align: center;
         }
         .item-card:hover { border-color: var(--primary); transform: translateY(-5px); }
-        .item-card img { width: 64px; height: 64px; image-rendering: pixelated; margin-bottom: 20px; }
-        .item-title { font-weight: bold; color: #fff; font-size: 1.1rem; display: block; margin-bottom: 10px; }
+        .item-card img { width: 64px; height: 64px; image-rendering: pixelated; margin-bottom: 15px; }
 
-        /* Rules Boxes */
-        .rule-list { margin-top: 20px; }
+        .cmd-box { 
+            background: rgba(255, 255, 255, 0.02); padding: 20px; 
+            border-radius: 12px; margin-bottom: 10px; font-family: 'Consolas', monospace;
+        }
+        .cmd-row { color: var(--primary); margin-bottom: 5px; display: block; }
+        .cmd-sub { color: #666; font-size: 0.85rem; padding-left: 20px; display: block; }
+
         .rule-item { 
-            background: rgba(255, 255, 255, 0.02); 
-            padding: 18px 25px; 
-            margin-bottom: 12px; 
-            border-radius: 12px; 
-            border-left: 4px solid var(--primary);
-            font-size: 1rem;
-            display: flex;
-            align-items: flex-start;
+            background: rgba(255, 255, 255, 0.02); padding: 15px 20px; 
+            margin-bottom: 10px; border-radius: 10px; border-left: 3px solid var(--primary);
         }
-        .rule-item b { color: var(--primary); margin-right: 15px; min-width: 25px; }
-        .rule-ingame { border-left-color: var(--accent-red); }
-        .rule-ingame b { color: var(--accent-red); }
 
-        /* Footer */
-        footer { margin-top: 100px; padding: 40px 0; border-top: 1px solid var(--border); text-align: center; color: #444; font-size: 0.8rem; letter-spacing: 2px; }
-
-        @media (max-width: 1100px) {
-            .sidebar { transform: translateX(-100%); display: none; }
-            .content-wrapper { margin-left: 0; }
-        }
+        @media (max-width: 1000px) { .sidebar { display: none; } .content-wrapper { margin-left: 0; } }
     </style>
 </head>
 <body>
@@ -176,8 +140,8 @@
         <div class="sidebar-brand">DARKREST</div>
         
         <div class="nav-group">
-            <div class="nav-label">Navigation</div>
-            <a href="#welcome" class="nav-link active">🏠 Willkommen</a>
+            <div class="nav-label">Wiki</div>
+            <a href="#welcome" class="nav-link">🏠 Willkommen</a>
             <a href="#rules" class="nav-link">📜 Regelwerk</a>
             <a href="#modes" class="nav-link">🎮 Spielmodi</a>
             <a href="#items" class="nav-link">💎 Custom Items</a>
@@ -186,8 +150,8 @@
         
         <div class="nav-group">
             <div class="nav-label">Extern</div>
+            <a href="https://www.youtube.com/@Darkrest-network" target="_blank" class="nav-link">🎬 YouTube</a>
             <a href="https://discord.gg/5PMkSJ6724" target="_blank" class="nav-link">💬 Discord</a>
-            <a href="index.html" class="nav-link">🌐 Hauptseite</a>
         </div>
     </div>
 
@@ -195,86 +159,96 @@
         <nav class="navbar">
             <a href="index.html">Portal</a>
             <a href="wiki.html">Wiki</a>
-            <a href="https://discord.gg/5PMkSJ6724">Discord</a>
+            <a href="https://discord.gg/5PMkSJ6724">Support</a>
         </nav>
 
         <div class="container">
             
             <section id="welcome">
                 <h1>Willkommen</h1>
-                <p>Willkommen im offiziellen Wiki des <strong>Darkrest Networks</strong>. Hier findest du alles Wissenswerte über unsere Spielmodi, die geltenden Regeln und unsere exklusiven Systeme. Nutze die Navigation links, um dich zurechtzufinden.</p>
+                <p>Das offizielle Wiki für Darkrest Network. Hier findest du alle Informationen zum Server.</p>
             </section>
 
             <section id="rules">
                 <h2>📜 Regelwerk</h2>
-                <p>Mit dem Betreten des Netzwerks akzeptierst du automatisch die folgenden Bestimmungen. Unwissenheit schützt vor Strafe nicht.</p>
-                
-                <h3>Discord-Regeln</h3>
-                <div class="rule-list">
-                    <div class="rule-item"><b>1</b> Respektvoll – Keine Beleidigungen, Mobbing oder Provokationen.</div>
-                    <div class="rule-item"><b>2</b> Kein Spam – Keine Mass-Pings oder falsche Channels nutzen.</div>
-                    <div class="rule-item"><b>3</b> Werbung – Nur mit expliziter Team-Erlaubnis gestattet.</div>
-                    <div class="rule-item"><b>4</b> Inhalte – Keine NSFW-, illegalen oder extremen Inhalte.</div>
-                    <div class="rule-item"><b>7</b> Team-Anweisungen – Den Anweisungen der Moderation ist Folge zu leisten.</div>
-                    <div class="rule-item"><b>8</b> Private Daten – Keine persönlichen Informationen (Doxing) teilen.</div>
-                </div>
-
                 <h3>Ingame-Regeln</h3>
-                <div class="rule-list">
-                    <div class="rule-item rule-ingame"><b>1</b> Keine Hacks – X-Ray, Ghost-Clients oder Duping führen zum permanenten Bann.</div>
-                    <div class="rule-item rule-ingame"><b>3</b> Griefing – Das Zerstören fremden Eigentums ist streng untersagt.</div>
-                    <div class="rule-item"><b>4</b> Combat-Logging – Das Fliehen aus Kämpfen durch Logout ist verboten.</div>
-                    <div class="rule-item"><b>5</b> Exploits melden – Wer Fehler ausnutzt, statt sie zu melden, wird gebannt.</div>
-                    <div class="rule-item"><b>8</b> Support – Es besteht Clip-Pflicht bei Support-Anfragen (Beweislast).</div>
-                    <div class="rule-item"><b>9</b> Betteln – Fragen nach Ingame-Zeit oder Rängen ist untersagt.</div>
-                </div>
+                <div class="rule-item"><b>1. Keine Hacks</b> - X-Ray, Ghost-Clients oder Duping führen zum Bann.</div>
+                <div class="rule-item" style="border-left-color: var(--accent-red);"><b>3. Griefing</b> - Streng untersagt und führt zum sofortigen Bann!</div>
+                <div class="rule-item"><b>8. Support</b> - Clip-Pflicht bei Problemen (Beweispflicht).</div>
+                <div class="rule-item"><b>9. Keine Fragen nach Ingame-Zeit</b></div>
             </section>
 
             <section id="modes">
                 <h2>🎮 Spielmodi</h2>
-                <div class="item-grid">
-                    <div class="item-card">
-                        <span class="item-title">Ultimate SMP</span>
-                        <p style="font-size: 0.85rem;">Survival mit Tiefgang. Eigene Wirtschaft, Claims und Langzeit-Motivation.</p>
-                    </div>
-                    <div class="item-card">
-                        <span class="item-title">Random Manhunt</span>
-                        <p style="font-size: 0.85rem;">Jeder abgebaute Block gibt ein zufälliges Item. Chaos pur!</p>
-                    </div>
-                    <div class="item-card">
-                        <span class="item-title">PvP Arena</span>
-                        <p style="font-size: 0.85rem;">Trainiere dein Aiming in unserer No-Lag Umgebung mit verschiedenen Kits.</p>
-                    </div>
-                    <div class="item-card">
-                        <span class="item-title">Bedwars</span>
-                        <p style="font-size: 0.85rem;">Der Taktik-Klassiker. Verteidige dein Bett und vernichte die Gegner.</p>
-                    </div>
-                </div>
+                <p><b>Ultimate SMP:</b> Survival mit Claims & Wirtschaft.<br>
+                <b>Random Manhunt:</b> Jeder Block-Break droppt ein zufälliges Item.<br>
+                <b>Bedwars:</b> Klassisches Minigame-Erlebnis.</p>
             </section>
 
             <section id="items">
                 <h2>💎 Custom Items</h2>
                 <div class="item-grid">
                     <div class="item-card">
-                        <img src="sword.png" alt="Sword Icon">
-                        <span class="item-title">Dark-Scythe</span>
-                        <p style="font-size: 0.8rem;">Verursacht nachts erhöhten Schaden und gewährt kurzzeitig Speed.</p>
+                        <img src="osterei.png" alt="Icon">
+                        <div style="font-weight: bold;">Das Osterei</div>
+                        <div style="font-size: 0.8rem; color: #666;">Ein seltenes Sammler-Item mit Spezial-Effekt.</div>
                     </div>
                     <div class="item-card">
-                        <img src="pickaxe.png" alt="Pickaxe Icon">
-                        <span class="item-title">Area-Miner</span>
-                        <p style="font-size: 0.8rem;">Baut Blöcke in einem 3x3 Radius ab. Erhältlich über Events.</p>
+                        <img src="server_item.png" alt="Icon">
+                        <div style="font-weight: bold;">Der "Server"</div>
+                        <div style="font-size: 0.8rem; color: #666;">Ein mächtiges Artefakt des Netzwerks.</div>
+                    </div>
+                    <div class="item-card">
+                        <img src="elytra.png" alt="Icon">
+                        <div style="font-weight: bold;">Gepanzerte Elytra</div>
+                        <div style="font-size: 0.8rem; color: #666;">Bietet den Schutz einer Netherite-Brustplatte.</div>
+                    </div>
+                    <div class="item-card">
+                        <img src="bundle.png" alt="Icon">
+                        <div style="font-weight: bold;">Mystery Bundle</div>
+                        <div style="font-size: 0.8rem; color: #666;">Sieht aus wie ein Totenkompass, birgt aber Geheimnisse.</div>
                     </div>
                 </div>
             </section>
 
             <section id="cmds">
-                <h2>⌨️ Wichtige Befehle</h2>
-                <div class="rule-list">
-                    <div class="rule-item"><b>/spawn</b> Teleportiert dich zum Haupt-Spawnpoint.</div>
-                    <div class="rule-item"><b>/tpa [Name]</b> Sendet eine Teleport-Anfrage an einen Spieler.</div>
-                    <div class="rule-item"><b>/home</b> Teleportiert dich zu deinem gesetzten Zuhause (VIP).</div>
-                    <div class="rule-item"><b>/server</b> Öffnet das Menü zur Serverauswahl.</div>
+                <h2>⌨️ Kommand Übersicht</h2>
+                
+                <h3>🌍 Allgemeine Kommands</h3>
+                <div class="cmd-box">
+                    <span class="cmd-row">➤ /sb » Scoreboard anzeigen</span>
+                    <span class="cmd-row">➤ /spawn » Zum Spawn teleportieren</span>
+                    <span class="cmd-row">➤ /msg <Spieler> » Privater Chat</span>
+                    <span class="cmd-row">➤ /tpa <Spieler> » Teleport-Anfrage</span>
+                    <span class="cmd-row">➤ /server <Name> » Server wechseln</span>
+                    <span class="cmd-sub">↳ z. B. Manhunt, Lobby, Minigames</span>
+                </div>
+
+                <h3>⚔️ PvP-Welt</h3>
+                <div class="cmd-box">
+                    <span class="cmd-row">➤ /kit » Kit erhalten (nur hier verfügbar)</span>
+                </div>
+
+                <h3>👑 BigBoss Rang</h3>
+                <div class="cmd-box">
+                    <span class="cmd-row">➤ /hat » Item auf dem Kopf tragen</span>
+                    <span class="cmd-row">➤ /craft » Mobiles Crafting-Menü</span>
+                    <span class="cmd-row">➤ /warp » Warp-Liste öffnen</span>
+                </div>
+
+                <h3>⭐ VIP-Kommands</h3>
+                <div class="cmd-box">
+                    <span class="cmd-row">➤ /home » Zum Home teleportieren</span>
+                    <span class="cmd-row">➤ /ec » Enderchest öffnen</span>
+                    <span class="cmd-row">➤ /anvil » Amboss öffnen</span>
+                    <span class="cmd-row">➤ /grindstone » Schleifstein öffnen</span>
+                    <span class="cmd-row">➤ /"welt" » Welten wechseln</span>
+                    <span class="cmd-sub">↳ SMP • Lobby • PvP</span>
+                </div>
+
+                <div style="text-align: center; margin-top: 30px; opacity: 0.6;">
+                    💬 Bei Fragen melde dich beim Team!<br>
+                    <b>Viel Spaß auf dem Server!</b>
                 </div>
             </section>
 
@@ -284,27 +258,5 @@
         </div>
     </div>
 
-    <script>
-        // Aktiven Link in der Sidebar hervorheben beim Scrollen
-        const sections = document.querySelectorAll("section");
-        const navLinks = document.querySelectorAll(".nav-link");
-
-        window.addEventListener("scroll", () => {
-            let current = "";
-            sections.forEach((section) => {
-                const sectionTop = section.offsetTop;
-                if (pageYOffset >= sectionTop - 150) {
-                    current = section.getAttribute("id");
-                }
-            });
-
-            navLinks.forEach((a) => {
-                a.classList.remove("active");
-                if (a.getAttribute("href").includes(current)) {
-                    a.classList.add("active");
-                }
-            });
-        });
-    </script>
 </body>
 </html>
