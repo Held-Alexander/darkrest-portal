@@ -22,17 +22,9 @@
             background: radial-gradient(circle at center, #0a1515 0%, #010101 100%);
         }
 
-        /* Sanftes Einblenden der gesamten Seite */
-        @keyframes fadeInPage {
-            from { opacity: 0; transform: translateY(20px); }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
-        }
-
-        .main-container {
-            max-width: 1000px;
-            width: 90%;
-            margin: 120px auto 60px auto;
-            animation: fadeInPage 0.8s ease-out;
         }
 
         .navbar {
@@ -45,165 +37,211 @@
         .navbar a {
             color: white; text-decoration: none; margin: 0 20px;
             font-weight: bold; letter-spacing: 2px; font-size: 0.8rem;
-            text-transform: uppercase; transition: 0.3s; opacity: 0.7;
+            text-transform: uppercase; transition: 0.3s;
+        }
+        .navbar a:hover { color: var(--primary); }
+
+        .main-container {
+            max-width: 1100px;
+            width: 90%;
+            margin: 120px auto 60px auto;
+            animation: fadeInUp 0.8s ease-out;
         }
 
-        .navbar a:hover { opacity: 1; color: var(--primary); }
-
+        .header-section { text-align: center; margin-bottom: 60px; }
+        
         h1 { 
-            font-size: 3rem; text-align: center; letter-spacing: 10px; 
-            text-transform: uppercase; margin-bottom: 10px;
+            font-size: clamp(2rem, 5vw, 3.5rem); letter-spacing: 10px; 
+            text-transform: uppercase; margin: 0;
             background: linear-gradient(to right, #fff, var(--primary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .wiki-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-top: 50px;
+        .update-banner {
+            display: inline-block;
+            padding: 5px 20px;
+            border: 1px solid var(--primary);
+            border-radius: 50px;
+            color: var(--primary);
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            margin-top: 15px;
+            text-transform: uppercase;
         }
 
-        /* Glassmorphism Card Style */
+        .wiki-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
         .wiki-card {
             background: var(--glass);
             backdrop-filter: blur(10px);
-            padding: 30px;
-            border-radius: 25px;
+            padding: 35px;
+            border-radius: 30px;
             border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            overflow: hidden;
+            transition: 0.4s;
         }
 
         .wiki-card:hover {
-            transform: scale(1.02);
             border-color: var(--primary);
-            box-shadow: 0 20px 50px rgba(0, 229, 255, 0.1);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 229, 255, 0.1);
         }
-
-        /* Ein leuchtender Akzent beim Hover */
-        .wiki-card::before {
-            content: '';
-            position: absolute; top: 0; left: -100%;
-            width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 229, 255, 0.05), transparent);
-            transition: 0.5s;
-        }
-
-        .wiki-card:hover::before { left: 100%; }
 
         .wiki-card h3 {
-            color: var(--primary);
+            color: #fff;
             text-transform: uppercase;
-            letter-spacing: 3px;
-            font-size: 1.1rem;
-            margin-bottom: 20px;
+            letter-spacing: 2px;
+            font-size: 1rem;
+            margin-bottom: 25px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 15px;
         }
 
         .cmd-item {
-            background: rgba(0,0,0,0.3);
-            margin-bottom: 10px;
-            padding: 12px 15px;
-            border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.02);
-            transition: 0.2s;
+            margin-bottom: 15px;
+            padding-left: 10px;
+            border-left: 2px solid transparent;
+            transition: 0.3s;
         }
 
         .cmd-item:hover {
-            background: rgba(0, 229, 255, 0.05);
-            padding-left: 20px;
+            border-left-color: var(--primary);
+            padding-left: 15px;
         }
 
         .cmd-name {
             font-family: 'Consolas', monospace;
             color: var(--primary);
             font-weight: bold;
-            display: block;
+            font-size: 1rem;
         }
 
         .cmd-desc {
-            color: #888;
+            color: #aaa;
             font-size: 0.85rem;
+            display: block;
+            margin-top: 2px;
+        }
+
+        .cmd-note {
+            color: #555;
+            font-size: 0.75rem;
+            display: block;
+            margin-top: 4px;
+            font-style: italic;
         }
 
         footer {
-            margin-top: 100px;
-            padding: 60px;
+            margin-top: 80px;
+            padding: 50px;
             text-align: center;
             border-top: 1px solid rgba(255,255,255,0.05);
         }
 
-        .brand-footer {
-            letter-spacing: 15px; font-weight: 900;
-            color: rgba(255,255,255,0.1); text-transform: uppercase;
-        }
+        .brand-footer { letter-spacing: 12px; font-weight: 900; color: rgba(255,255,255,0.1); text-transform: uppercase; }
     </style>
 </head>
 <body>
 
     <nav class="navbar">
         <a href="index.html">Home</a>
-        <a href="wiki.html" style="color: var(--primary); opacity: 1;">Wiki</a>
+        <a href="wiki.html" style="color: var(--primary);">Wiki</a>
         <a href="https://discord.gg/5PMkSJ6724" target="_blank">Discord</a>
     </nav>
 
     <div class="main-container">
-        <h1>Wiki</h1>
-        <p style="text-align: center; color: #666; letter-spacing: 2px;">DEINE ÜBERSICHT FÜR DAS DARKREST MULTIVERSUM</p>
+        <div class="header-section">
+            <h1>Wiki & Commands</h1>
+            <div class="update-banner">📢 Server Update: 10.04.2026</div>
+        </div>
 
         <div class="wiki-grid">
             <div class="wiki-card">
-                <h3>💬 Kommunikation</h3>
-                <div class="cmd-item">
-                    <span class="cmd-name">/msg [Spieler]</span>
-                    <span class="cmd-desc">Flüstert einem Spieler zu.</span>
-                </div>
-                <div class="cmd-item">
-                    <span class="cmd-name">/r</span>
-                    <span class="cmd-desc">Antwortet schnell auf die letzte Nachricht.</span>
-                </div>
-                <div class="cmd-item">
-                    <span class="cmd-name">/discord</span>
-                    <span class="cmd-desc">Zeigt den Link zu unserer Community.</span>
-                </div>
-            </div>
-
-            <div class="wiki-card">
-                <h3>🌍 Navigation</h3>
-                <div class="cmd-item">
-                    <span class="cmd-name">/spawn</span>
-                    <span class="cmd-desc">Teleportiert dich zurück zum Startpunkt.</span>
-                </div>
-                <div class="cmd-item">
-                    <span class="cmd-name">/tpa [Spieler]</span>
-                    <span class="cmd-desc">Sendet eine Teleport-Anfrage.</span>
-                </div>
-                <div class="cmd-item">
-                    <span class="cmd-name">/tpahere [Spieler]</span>
-                    <span class="cmd-desc">Bittet einen Spieler zu dir.</span>
-                </div>
-            </div>
-
-            <div class="wiki-card">
-                <h3>🎮 Gameplay</h3>
-                <div class="cmd-item">
-                    <span class="cmd-name">/kit</span>
-                    <span class="cmd-desc">Öffnet das Menü für Starter-Ausrüstung.</span>
-                </div>
+                <h3>🌍 Allgemeine Kommands</h3>
                 <div class="cmd-item">
                     <span class="cmd-name">/sb</span>
-                    <span class="cmd-desc">Schaltet das Scoreboard um.</span>
+                    <span class="cmd-desc">Scoreboard anzeigen / verbergen</span>
                 </div>
                 <div class="cmd-item">
-                    <span class="cmd-name">/server [Lobby/SMP/PvP]</span>
-                    <span class="cmd-desc">Wechsle zwischen den Welten.</span>
+                    <span class="cmd-name">/spawn</span>
+                    <span class="cmd-desc">Zum Haupt-Spawn teleportieren</span>
+                </div>
+                <div class="cmd-item">
+                    <span class="cmd-name">/msg &lt;Spieler&gt;</span>
+                    <span class="cmd-desc">Privaten Chat mit einem Spieler starten</span>
+                </div>
+                <div class="cmd-item">
+                    <span class="cmd-name">/tpa &lt;Spieler&gt;</span>
+                    <span class="cmd-desc">Teleport-Anfrage versenden</span>
+                </div>
+                <div class="cmd-item">
+                    <span class="cmd-name">/server &lt;Name&gt;</span>
+                    <span class="cmd-desc">Zu einem anderen Server wechseln</span>
+                    <span class="cmd-note">z.B. Manhunt, Lobby, Minigames</span>
                 </div>
             </div>
+
+            <div class="wiki-card">
+                <h3>⚔️ PvP-Welt</h3>
+                <div class="cmd-item">
+                    <span class="cmd-name">/kit</span>
+                    <span class="cmd-desc">Starter-Kit für den Kampf erhalten</span>
+                    <span class="cmd-note">Hinweis: Nur in der PvP-Welt verfügbar!</span>
+                </div>
+            </div>
+
+            <div class="wiki-card">
+                <h3>👑 BigBoss Rang</h3>
+                <div class="cmd-item">
+                    <span class="cmd-name">/hat</span>
+                    <span class="cmd-desc">Das Item in deiner Hand als Hut tragen</span>
+                </div>
+                <div class="cmd-item">
+                    <span class="cmd-name">/craft</span>
+                    <span class="cmd-desc">Werkbank überall mobil öffnen</span>
+                </div>
+                <div class="cmd-item">
+                    <span class="cmd-name">/warp</span>
+                    <span class="cmd-desc">Liste aller öffentlichen Warps öffnen</span>
+                </div>
+            </div>
+
+            <div class="wiki-card">
+                <h3>⭐ VIP-Kommands</h3>
+                <div class="cmd-item">
+                    <span class="cmd-name">/home</span>
+                    <span class="cmd-desc">Teleportiere dich zu deinem Zuhause</span>
+                </div>
+                <div class="cmd-item">
+                    <span class="cmd-name">/ec</span>
+                    <span class="cmd-desc">Öffne deine Enderchest von überall</span>
+                </div>
+                <div class="cmd-item">
+                    <span class="cmd-name">/anvil</span>
+                    <span class="cmd-desc">Mobilen Amboss benutzen</span>
+                </div>
+                <div class="cmd-item">
+                    <span class="cmd-name">/grindstone</span>
+                    <span class="cmd-desc">Mobilen Schleifstein benutzen</span>
+                </div>
+                <div class="cmd-item">
+                    <span class="cmd-name">/"welt"</span>
+                    <span class="cmd-desc">Schneller Wechsel zwischen Welten</span>
+                    <span class="cmd-note">SMP • Lobby • PvP</span>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 50px; opacity: 0.5; font-size: 0.9rem;">
+            💬 Bei weiteren Fragen melde dich einfach bei unserem Team!<br>
+            <strong>Viel Spaß auf dem Darkrest Network!</strong>
         </div>
     </div>
 
