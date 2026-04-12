@@ -13,6 +13,7 @@
         .main-container { max-width: 800px; width: 90%; background: rgba(8, 8, 8, 0.98); margin: 120px auto 60px auto; padding: 60px 40px; border-radius: 30px; border: 1px solid rgba(255, 255, 255, 0.05); box-shadow: 0 40px 100px rgba(0,0,0,0.8); line-height: 1.8; }
         h1 { color: var(--primary); letter-spacing: 5px; text-transform: uppercase; text-align: center; }
         h2 { color: #fff; margin-top: 30px; font-size: 1.2rem; border-bottom: 1px solid rgba(0, 229, 255, 0.1); }
+        .warning-box { border: 1px solid #ff4444; padding: 15px; border-radius: 10px; background: rgba(255, 68, 68, 0.05); color: #ffbbbb; margin: 20px 0; font-size: 0.9rem; }
         footer { width: 100%; padding: 40px; background: rgba(0,0,0,0.8); text-align: center; border-top: 1px solid rgba(255,255,255,0.05); margin-top: auto; }
     </style>
 </head>
@@ -22,26 +23,20 @@
         <a href="wiki.html">Wiki</a>
         <a href="https://discord.gg/5PMkSJ6724" target="_blank">Discord</a>
     </nav>
-
     <div class="main-container">
         <h1>Datenschutzerklärung</h1>
-        <p>Verantwortlicher im Sinne der Datenschutzgesetze ist Alexander Brachtendorf (Anschrift siehe Impressum).</p>
-
+        <p>Verantwortlich: Alexander Brachtendorf (Anschrift siehe Impressum).</p>
         <h2>1. Hosting & Log-Files</h2>
-        <p>Diese Webseite wird über GitHub Pages bereitgestellt. GitHub erhebt dabei Daten über Zugriffe (IP-Adresse, Browsertyp, Zeit). Dies dient der Sicherheit und Stabilität der Seite.</p>
-
+        <p>Gehostet über GitHub Pages. Es werden technisch notwendige Log-Daten (IP, Zeit) erfasst.</p>
         <h2>2. Minecraft-Server Daten</h2>
-        <p>Beim Verbinden mit dem Darkrest Minecraft-Netzwerk werden deine IP-Adresse, dein Nutzername und deine UUID verarbeitet. Dies ist notwendig, um den Spielbetrieb zu ermöglichen, Bans durchzusetzen und die Sicherheit des Netzwerks zu gewährleisten. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO.</p>
-
-        <h2>3. Kontaktmöglichkeit</h2>
-        <p>Wenn du uns per E-Mail kontaktierst, werden deine Angaben zur Bearbeitung der Anfrage gespeichert. Wir geben diese Daten nicht ohne deine Einwilligung weiter.</p>
-
-        <h2>4. Deine Rechte</h2>
-        <p>Du hast das Recht auf Auskunft, Berichtigung oder Löschung deiner Daten. Kontaktiere uns dazu bitte unter: <strong>legal@darkrest-network.eu.org</strong></p>
+        <p>Verarbeitet werden UUID, Username und IP zur Bereitstellung des Spielbetriebs. Protokolldateien werden nach 7 Tagen gelöscht.</p>
+        <h2>3. Dein Recht auf Löschung</h2>
+        <p>Du kannst jederzeit die Löschung deiner spielbezogenen Daten verlangen.</p>
+        <div class="warning-box">
+            <strong>WICHTIGER HINWEIS:</strong> Eine Löschung deiner personenbezogenen Daten vom Minecraft-Server führt unwiderruflich zum Verlust all deiner Ingame-Items, Grundstücke, Ränge und deines gesamten Spielfortschritts, da diese fest mit deiner UUID verknüpft sind.
+        </div>
+        <p>Kontakt für Löschanträge: <strong>legal@darkrest-network.eu.org</strong></p>
     </div>
-
-    <footer>
-        <div style="letter-spacing: 10px; font-weight: 900; color: rgba(255, 255, 255, 0.2);">B-CORE STUDIOS</div>
-    </footer>
+    <footer><div style="letter-spacing: 10px; color: rgba(255, 255, 255, 0.2);">B-CORE STUDIOS</div></footer>
 </body>
 </html>
